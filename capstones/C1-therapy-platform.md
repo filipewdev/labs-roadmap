@@ -234,6 +234,25 @@ This is a production app — testing is non-negotiable.
 
 ---
 
+## Architecture Decision Records (ADRs)
+
+Write at least 3 ADRs for key architectural decisions. These demonstrate the
+thinking behind the system — not just what you built, but *why* you built it
+that way. ADRs are standard practice at mature engineering organizations and
+signal senior-level thinking to reviewers.
+
+**Required ADRs** (write as you make each decision, not retroactively):
+- [ ] ADR-001: Why RabbitMQ for reminders instead of a cron job or Redis pub/sub
+- [ ] ADR-002: Why Drizzle ORM instead of Prisma or raw SQL
+- [ ] ADR-003: A decision of your choice (e.g., session storage strategy, notification channel priority, deployment topology)
+
+Use the format from Lab 28 (System Design Practice): Status, Context, Decision,
+Alternatives considered, Consequences.
+
+Store ADRs in `docs/adr/` in the repo. They are part of the deliverable.
+
+---
+
 ## Build Milestones
 
 - [ ] M1: Database schema + API (appointments CRUD)
