@@ -1,0 +1,130 @@
+name: Lab Journal
+description: Track progress and notes while working through a lab
+title: "Lab [NUMBER] — [NAME]"
+labels: ["lab"]
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        **Replace the title above** with the exact lab name from the spec.
+        Examples: `Lab 00-A — Testing Fundamentals` · `Lab 08 — PostgreSQL Mastery` · `OS-A — Publish npm Library`
+
+        Fill in each section as you go — not all at the end.
+        The confusion mid-lab is the evidence of learning. Write it down while you still feel it.
+
+  # ─── Links ────────────────────────────────────────────────────────────────
+
+  - type: input
+    id: spec-link
+    attributes:
+      label: Spec file
+      description: Link to the lab spec in labs-roadmap
+      placeholder: "e.g. https://github.com/YOURNAME/labs-roadmap/blob/main/labs/08-postgresql-mastery.md"
+    validations:
+      required: true
+
+  - type: input
+    id: impl-repo
+    attributes:
+      label: Implementation repo
+      description: Link to the repo where you're building this lab (add when created)
+      placeholder: "e.g. https://github.com/YOURNAME/lab-08-postgresql"
+
+  # ─── Dates ────────────────────────────────────────────────────────────────
+
+  - type: input
+    id: started
+    attributes:
+      label: Started
+      placeholder: "YYYY-MM-DD"
+    validations:
+      required: true
+
+  - type: input
+    id: finished
+    attributes:
+      label: Finished
+      placeholder: "YYYY-MM-DD (fill when done)"
+
+  - type: input
+    id: hours
+    attributes:
+      label: Hours spent
+      placeholder: "e.g. 7h (be honest — helps plan future labs)"
+
+  # ─── Progress ─────────────────────────────────────────────────────────────
+
+  - type: textarea
+    id: checklist
+    attributes:
+      label: Done When (paste from spec)
+      description: >
+        Copy the Done When checklist from the lab spec and paste it here.
+        Use GitHub checkbox syntax: `- [ ] item`
+        Tick as you go — not all at the end.
+      placeholder: |
+        - [ ] 
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+
+  # ─── Notes ────────────────────────────────────────────────────────────────
+
+  - type: textarea
+    id: what-clicked
+    attributes:
+      label: What clicked
+      description: Moments where something suddenly made sense. One line per insight is enough.
+      placeholder: "e.g. Goroutine + channel model finally made sense after writing the Hub"
+
+  - type: textarea
+    id: what-confused
+    attributes:
+      label: What confused me
+      description: Concepts that took longer to understand than expected, or still feel fuzzy.
+      placeholder: "e.g. Why buffered vs unbuffered channels matters for the Hub's fan-out"
+
+  - type: textarea
+    id: do-differently
+    attributes:
+      label: What I'd do differently
+      description: One or two decisions you'd change if starting over. "Nothing" is never the right answer.
+      placeholder: "e.g. I'd draw the goroutine/channel diagram before writing any code"
+
+  # ─── Concepts ─────────────────────────────────────────────────────────────
+
+  - type: textarea
+    id: key-concepts
+    attributes:
+      label: Key Concepts (3–5)
+      description: >
+        The concepts you'll carry forward — in plain language, not jargon.
+        These feed directly into the "Key Concepts Learned" section of your README.
+        Rule: if you can't explain it without jargon, rewrite it.
+        Rule: include the "so what?" — why does this matter in practice?
+      placeholder: |
+        1. Why the Hub runs in a single goroutine — [your explanation]
+        2. Buffered vs unbuffered channels — [your explanation]
+        3. Ping/pong heartbeat purpose — [your explanation]
+    validations:
+      required: true
+
+  # ─── Context ──────────────────────────────────────────────────────────────
+
+  - type: textarea
+    id: aws-equivalent
+    attributes:
+      label: AWS Equivalent
+      description: >
+        What is this lab's tool in AWS? One paragraph.
+        Reference: docs/aws-context.md in labs-roadmap.
+      placeholder: "e.g. API Gateway WebSocket APIs + DynamoDB for connection state..."
+
+  - type: textarea
+    id: open-api
+    attributes:
+      label: Open API Used
+      description: If you integrated a public API — which one, why, and how was it mocked in tests?
+      placeholder: "e.g. BrasilAPI /api/cep/v2 for address lookup — mocked with vi.stubGlobal('fetch', ...)"
