@@ -19,6 +19,7 @@ Establish professional Git habits and set up a real CI pipeline — both of whic
 - [ ] You have a `.gitconfig` with useful aliases set up locally
 - [ ] You can create, rebase, and squash a feature branch cleanly
 - [ ] You understand what `git reflog` is and when it saves you
+- [ ] CI includes security gates: dependency audit + security linter
 
 ---
 
@@ -283,6 +284,68 @@ git log --oneline  # All 3 commits are back
 ```
 
 Reflog retains entries for 90 days by default. It's the safety net under every Git operation.
+
+---
+
+## Part 5: Security Gates in CI (30 min)
+
+Add basic security scanning to your pipeline. These gates cost seconds per run and catch real vulnerabilities before they reach `main`.
+
+```yaml
+      # Add these steps after the existing coverage step:
+
+      - name: Dependency audit
+        run: pnpm audit --audit-level=high
+        # Fails if any dependency has a known high/critical vulnerability
+        # Fix with: pnpm audit --fix (or update the package manually)
+
+      - name: Security lint
+        run: pnpm exec eslint src --ext .ts --rule '{"security/detect-object-injection": "error"}'
+        # Requires: pnpm add -D eslint-plugin-security
+        # Catches: eval(), object injection, non-literal require(), regex DoS
+```
+
+**For Go labs** (Lab 04+), the equivalent:
+```yaml
+      - name: Security scan
+        run: gosec ./...
+        # Install: go install github.com/securego/gosec/v2/cmd/gosec@latest
+        # Catches: SQL injection, hardcoded credentials, weak crypto
+```
+
+**For Python labs** (Lab 12+), the equivalent:
+```yaml
+      - name: Security scan
+        run: bandit -r src/
+        # Install: pip install bandit
+        # Catches: eval(), hardcoded passwords, insecure HTTP, pickle deserialization
+```
+
+### Optional: Automated Dependency Updates
+
+Enable **Dependabot** by adding `.github/dependabot.yml`:
+
+```yaml
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+```
+
+Dependabot opens PRs when dependencies have updates. Your CI pipeline runs on the PR — if tests pass, you can merge with confidence.
+
+### Why These Gates Matter
+
+These are not busywork:
+- `pnpm audit` would have caught the `event-stream` supply chain attack (2018)
+- `eslint-plugin-security` catches `eval()` and object injection — OWASP Top 10 patterns
+- `gosec` catches hardcoded credentials and SQL injection in Go
+- Dependabot prevents dependencies from going stale for months (the #1 source of known vulnerabilities)
+
+For deeper security work (manual exploitation, Vault, OWASP Juice Shop), see the [Networking & Security track](../docs/optional-advanced-labs.md#networking--security-track).
 
 ---
 
