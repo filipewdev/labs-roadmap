@@ -8,7 +8,7 @@ Not toy examples.
 **Language**: Bash
 
 **Done when**:
-- [ ] Script 1: Database backup — pg_dump, compress, upload to cloud, notify on failure
+- [ ] Script 1: Database backup — pg_dump, compress, upload to Backblaze B2 or Cloudflare R2 (S3-compatible CLI), notify on failure
 - [ ] Script 2: Log analysis — parse Nginx JSON logs, top 10 paths, 5xx error rate
 - [ ] Script 3: Health check — ping N services, report which are down, exit 1 if any fail
 - [ ] All scripts start with `set -euo pipefail`

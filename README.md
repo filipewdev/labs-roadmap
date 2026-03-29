@@ -148,6 +148,7 @@ After that: any order based on what your current work needs or what interests yo
 | [Open APIs](./docs/open-apis.md) | BrasilAPI, BACEN, IBGE, NASA and others — mapped to labs |
 | [README template](./docs/readme-template.md) | Template for every implementation repo |
 | [Advanced labs](./docs/optional-advanced-labs.md) | Optional tracks: Rust, Lua, Elixir, Zig, Homelab Infra, Networking & Security, Career |
+| [Cost guide](./docs/cost-guide.md) | What's free, what costs money, total budget planner |
 | [Homelab architecture](./docs/homelab-architecture.md) | Vision doc for a self-hosted personal cloud |
 | [Capstone I spec](./capstones/C1-therapy-platform.md) | Therapy scheduling platform — full specification |
 | [Capstone II spec](./capstones/C2-homehub.md) | HomeHub IoT + mobile — full specification |
