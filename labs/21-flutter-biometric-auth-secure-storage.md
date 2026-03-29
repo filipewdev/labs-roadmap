@@ -3,7 +3,7 @@
 **Goal**: Replace plaintext token storage with biometric-gated hardware-backed
 secure storage. Understand what "secure" actually means at the OS level.
 
-**Time box**: 7 hours
+**Time box**: 8 hours
 
 **Language**: Dart/Flutter
 

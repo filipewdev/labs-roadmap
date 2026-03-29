@@ -14,6 +14,7 @@ one of your previous labs — everything that a VPS tutorial skips.
 - [ ] One previous lab deployed and accessible externally
 - [ ] DuckDNS dynamic DNS configured
 - [ ] Backup script running via cron (database dump → Backblaze B2 or Cloudflare R2 via S3-compatible CLI)
+- [ ] **Disaster recovery drill**: wipe the deployed lab's database, restore from backup, verify the app works. Document RTO (how long it took to recover) in the runbook.
 - [ ] CPU temperature visible in Grafana via Node Exporter
 
 **Key concepts**:
@@ -22,6 +23,7 @@ one of your previous labs — everything that a VPS tutorial skips.
 - SD card vs SSD for production reliability
 - Dynamic DNS — accessing a home server without a static IP
 - Port forwarding — exposing the Pi to the internet
+- **RTO and RPO**: Recovery Time Objective (how long until service is back) and Recovery Point Objective (how much data can you afford to lose). Your cron interval defines your RPO. Your restore script speed defines your RTO. Measure both.
 
 **Testing requirement**: Follow a verification runbook after setup. Document what breaks and how you fixed it — this is the most valuable part of this lab. The runbook must include automated checks where possible (e.g., `curl -sS https://yourdomain | grep -q "expected"`, `systemctl is-active docker`).
 

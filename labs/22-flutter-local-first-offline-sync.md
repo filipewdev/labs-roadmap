@@ -3,7 +3,7 @@
 **Goal**: Build a note-taking app that works completely offline and syncs when
 connected — with a conflict resolution UI when two devices diverge.
 
-**Time box**: 10 hours (your most complex mobile lab)
+**Time box**: 11 hours (your most complex mobile lab)
 
 **Language**: Dart/Flutter + TypeScript (sync server)
 
