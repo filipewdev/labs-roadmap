@@ -14,6 +14,7 @@ query rewrites. No schema changes. Real dataset from IBGE.
 - [ ] At least one window function query written (e.g., rank cities by population within state)
 - [ ] Row-Level Security policy implemented (therapist sees only their clients)
 - [ ] TypeScript queries using Drizzle ORM for the same operations
+- [ ] Backup and restore: `pg_dump` the database, drop it, restore from the dump, verify data integrity. This is your first disaster recovery exercise.
 
 **Key concepts**:
 - Reading `EXPLAIN ANALYZE` output (Seq Scan = problem, Index Scan = good)
@@ -22,6 +23,7 @@ query rewrites. No schema changes. Real dataset from IBGE.
 - Window functions: `ROW_NUMBER()`, `RANK()`, `LAG()`, `SUM() OVER (...)`
 - Row-Level Security as a multi-tenancy pattern
 - Connection pooling with PgBouncer (why 500 app connections → 20 DB connections)
+- Backup and restore: `pg_dump` (logical) vs `pg_basebackup` (physical) — know when each applies
 
 **Local environment**: PostgreSQL in `docker-compose.yml`. `docker compose up -d` gives you a working database seeded with IBGE data. PgBouncer optional but recommended.
 

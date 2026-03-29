@@ -234,6 +234,30 @@ This is a production app — testing is non-negotiable.
 
 ---
 
+## Disaster Recovery Plan
+
+This is a production app with real client data. You need a DR plan before going live.
+
+**Backup strategy**:
+- PostgreSQL: automated `pg_dump` via cron every 6 hours → compressed → uploaded to Backblaze B2 or Cloudflare R2
+- Redis: RDB snapshot + AOF persistence (built-in). Redis data is cache-only — loss is inconvenient, not catastrophic.
+- RabbitMQ: messages are transient by design (DLQ catches failures). No backup needed.
+- Session reports (sensitive): included in PostgreSQL backup. Consider encrypting the backup at rest.
+
+**DR drill (required before M10 — go live)**:
+- [ ] Drop the PostgreSQL database on a staging environment
+- [ ] Restore from the latest backup
+- [ ] Verify: client data intact, appointments correct, session reports readable
+- [ ] Measure and document your RTO (recovery time) and RPO (data loss window)
+- [ ] Write the results in the README: "RPO: 6 hours (cron interval). RTO: ~15 minutes (tested)."
+
+**What to monitor for DR**:
+- Backup script exit code (alert on failure via n8n or Grafana)
+- Backup age (alert if last backup is older than 12 hours)
+- Disk usage on VPS (alert at 80%)
+
+---
+
 ## Architecture Decision Records (ADRs)
 
 Write at least 3 ADRs for key architectural decisions. These demonstrate the

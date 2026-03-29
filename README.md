@@ -85,7 +85,7 @@ Phase 7 — Security
   16    API Gateway + Rate Limiting         YAML · 6h
 
 Phase 8 — Shell & Linux
-  17    Bash Scripting Fundamentals         Bash · 5h
+  17    Bash Scripting Fundamentals         Bash · 6h
   18    Linux System Administration         Shell · 6h
 
 Phase 9 — Automation & AI
@@ -93,8 +93,8 @@ Phase 9 — Automation & AI
   20    AI Streaming API                    TypeScript · 7h
 
 Phase 10 — Mobile Depth
-  21    Flutter Biometric Auth              Dart · 7h
-  22    Flutter Local-First + Offline Sync  Dart + TypeScript · 10h
+  21    Flutter Biometric Auth (BLoC)       Dart · 8h
+  22    Flutter Local-First (Riverpod)     Dart + TypeScript · 11h
 
 Phase 11 — Hardware & IoT
   23    Raspberry Pi as Production Server   Shell · 6h

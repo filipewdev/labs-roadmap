@@ -158,6 +158,29 @@ Last-known values from local SQLite when away.
 
 ---
 
+## Disaster Recovery Plan
+
+HomeHub runs on a single Raspberry Pi — hardware failure is a real risk.
+
+**Backup strategy**:
+- PostgreSQL (sensor history, rules, audit log): automated `pg_dump` via cron every 12 hours → Backblaze B2 or Cloudflare R2
+- Docker Compose config + environment: version-controlled in Git (the repo IS the backup)
+- Automation rules: stored in PostgreSQL, included in the dump
+- Grafana dashboards: export as JSON, stored in Git
+
+**DR drill (required before M10 — demo video)**:
+- [ ] Simulate SD/SSD failure: start with a fresh Pi OS image
+- [ ] Reinstall Docker, pull images, restore PostgreSQL from backup
+- [ ] Verify: sensor data history intact, automation rules firing, Grafana dashboards restored
+- [ ] Measure and document your RTO
+- [ ] Write the results in the README: "Full recovery from bare OS to working system: ~X minutes"
+
+**What you can't back up**: Arduino firmware is in the Arduino's flash memory.
+If an Arduino dies, you re-flash from the source code in Git. This is why the
+firmware source is in the repo, not just on the device.
+
+---
+
 ## Architecture Decision Records (ADRs)
 
 Write at least 3 ADRs for key architectural decisions. These demonstrate the

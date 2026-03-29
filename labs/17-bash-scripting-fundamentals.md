@@ -3,12 +3,13 @@
 **Goal**: Write real shell scripts that automate things you actually need.
 Not toy examples.
 
-**Time box**: 5 hours
+**Time box**: 6 hours
 
 **Language**: Bash
 
 **Done when**:
 - [ ] Script 1: Database backup — pg_dump, compress, upload to Backblaze B2 or Cloudflare R2 (S3-compatible CLI), notify on failure
+- [ ] Script 1b: Restore script — download from cloud, decompress, restore to a fresh database, verify row count matches. **A backup without a tested restore is not a backup.**
 - [ ] Script 2: Log analysis — parse Nginx JSON logs, top 10 paths, 5xx error rate
 - [ ] Script 3: Health check — ping N services, report which are down, exit 1 if any fail
 - [ ] All scripts start with `set -euo pipefail`
