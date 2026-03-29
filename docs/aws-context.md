@@ -105,6 +105,10 @@ ElastiCache: sits in front of DB (lazy loading) or application (write-through)
 | Kafka | **MSK** (Managed Streaming for Kafka) | Same Kafka API, managed brokers, MSK Connect |
 | Kafka | **Kinesis Data Streams** | AWS-native alternative, shards = partitions, 24h–365d retention |
 | MQTT broker (Mosquitto) | **IoT Core** | MQTT at scale, device shadows, rules engine, triggers Lambda |
+| BullMQ (scheduled jobs) | **EventBridge Scheduler** | Cron/rate-based rules that trigger Lambda/SQS/SNS. EventBridge = the application-level scheduler in AWS. |
+| BullMQ (repeatable jobs) | **EventBridge Rules** | Event patterns match → trigger target. Same concept as BullMQ repeatable jobs but serverless. |
+| n8n (scheduled workflows) | **Step Functions + EventBridge** | Step Functions = visual workflow; EventBridge = the trigger/scheduler layer |
+| crontab / systemd timers | **EventBridge Scheduler (one-time or recurring)** | OS-level cron → cloud equivalent. Rate or cron expression → target (Lambda, ECS, etc.) |
 
 **SAA exam messaging concepts:**
 
@@ -115,6 +119,7 @@ Dead Letter Queue: max receive count → route to DLQ (same concept as lab)
 SNS + SQS fan-out: one SNS topic → multiple SQS queues = parallel processing
 Kinesis vs SQS: real-time analytics → Kinesis; decoupled workers → SQS
 EventBridge: event bus, schema registry, replaces CloudWatch Events
+EventBridge Scheduler: cron/rate rules → trigger any AWS service (replaces CloudWatch Events rules)
 ```
 
 ---
@@ -152,6 +157,11 @@ VPC Flow Logs: network traffic in/out of ENIs (security analysis)
 | n8n | **Step Functions** | Visual state machines for workflows; or **EventBridge Pipes** |
 | JWT auth | **Cognito** | User pools (auth), identity pools (AWS credential federation) |
 | OAuth 2.0 | **Cognito hosted UI** | Social login, SAML/OIDC federation |
+| HashiCorp Vault (Net-C) | **Secrets Manager** | Store/rotate secrets, automatic rotation via Lambda, cross-account access |
+| Vault KV engine | **Secrets Manager** (key-value) | Versioned secrets, audit trail, encryption at rest |
+| Vault AppRole auth | **IAM roles for services** | Services authenticate to get secrets without human credentials |
+| Vault dynamic secrets | **Secrets Manager + RDS integration** | Auto-generate short-lived DB credentials, auto-rotate |
+| `.env` files (all labs) | **Parameter Store** (SSM) | Cheaper than Secrets Manager, no auto-rotation, good for non-secret config |
 
 **SAA exam security concepts:**
 
@@ -161,7 +171,9 @@ STS: temporary credentials via AssumeRole
 Cognito User Pools: sign-up/sign-in, MFA, JWT tokens
 Cognito Identity Pools: swap Cognito/social token for temporary AWS credentials
 KMS: key management, envelope encryption, automatic key rotation
-Secrets Manager vs Parameter Store: SM auto-rotates, PS cheaper for non-secrets
+Secrets Manager: store/rotate secrets, auto-rotation via Lambda, $0.40/secret/month
+Parameter Store: free (standard), no auto-rotation, good for config that isn't secret
+Secrets Manager vs Parameter Store: SM auto-rotates + costs money, PS is free but manual rotation
 WAF: L7 protection, integrates with CloudFront, ALB, API Gateway
 Shield: DDoS protection (Standard free, Advanced paid)
 ```
