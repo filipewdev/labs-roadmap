@@ -20,7 +20,7 @@ using the `Result` pattern.
 - Railway-oriented programming (happy path + error path run in parallel)
 - When to use `Result` vs when to throw (expected errors vs programmer errors)
 
-**Testing requirement**: Test every method on `Result`. Test the HTTP wrapper with a mock fetch that returns both success and error responses. Verify that `match` handles all cases.
+**Testing requirement**: Test every method on `Result`. Test the HTTP wrapper with a mock fetch that returns both success and error responses. Verify that `match` handles all cases. **CI**: `tsc --noEmit` → `eslint` → `vitest run --coverage` (≥85% coverage).
 
 **AI usage note**: Ask AI: *"What are the tradeoffs between Result types vs exceptions in TypeScript? When is each more appropriate?"* Use this to form your own opinion, not to get a definitive answer.
 

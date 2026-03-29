@@ -22,7 +22,7 @@ Not toy examples.
 - Exit codes and their meaning
 - `trap` for cleanup on exit or signal
 
-**Testing requirement**: Use `bats`. Test the health check script with a mock server returning different status codes. Testing shell scripts feels weird — that's normal, do it anyway.
+**Testing requirement**: Use `bats`. Test all three scripts — not just the health check. Test the health check with a mock server returning different status codes. Test the log analysis script with a sample JSON log file. Testing shell scripts feels weird — that's normal, do it anyway. **CI**: `bats test/` in GitHub Actions.
 
 **AI usage note**: Bash syntax is inconsistent. Use AI freely for specific syntax questions: *"What does `${variable:-default}` mean?"* The concepts (error handling, exit codes) should be your own understanding.
 

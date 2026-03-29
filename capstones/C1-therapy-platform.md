@@ -203,6 +203,37 @@ For a therapy app handling sensitive health data, this is legally important.
 
 ---
 
+## Local Environment
+
+All services run via `docker-compose.yml`. `docker compose up -d` must start:
+PostgreSQL, Redis, RabbitMQ, Prometheus, Grafana, Loki, and Nginx.
+The Next.js and Fastify apps run on the host during development.
+
+A `Makefile` with `make up`, `make down`, `make logs`, `make test` standardizes the workflow (same pattern as Lab 14).
+
+---
+
+## Testing Strategy
+
+This is a production app — testing is non-negotiable.
+
+- **API**: Integration tests for all endpoints using `fastify.inject()` + `testcontainers` (PostgreSQL, Redis, RabbitMQ)
+- **Reminder worker**: Unit tests for scheduling logic; integration test verifying a message flows from queue to sent status
+- **RBAC**: Tests that therapist-only routes reject client tokens and vice versa
+- **LGPD**: Test that `DELETE /api/clients/:id` cascades and purges all PII
+
+**CI**: `tsc --noEmit` → `eslint` → `vitest run --coverage` (≥80% coverage). CI must pass before every merge to `main`.
+
+---
+
+## Development Discipline
+
+- **Conventional commits** throughout — this repo follows the same Git discipline as every lab
+- **AI as reviewer, not generator** — first attempt always written by hand; AI reviews security-sensitive code (auth, LGPD, RabbitMQ error handling)
+- **Branch workflow**: feature branches → PR → CI green → merge
+
+---
+
 ## Build Milestones
 
 - [ ] M1: Database schema + API (appointments CRUD)

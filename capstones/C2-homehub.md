@@ -136,6 +136,28 @@ Last-known values from local SQLite when away.
 
 ---
 
+## Testing Strategy
+
+- **API server**: Integration tests for REST endpoints using `fastify.inject()` + `testcontainers`
+- **Automation engine**: Unit tests for rule evaluation logic (given sensor readings + rule → expected action)
+- **MQTT bridge**: Unit tests with mock serial port (same pattern as Lab 24)
+- **Flutter app**: Widget tests for key screens; unit tests for conflict detection and sync logic (same pattern as Lab 22)
+- **Vision service**: Unit tests for preprocessing/postprocessing (same pattern as Lab 25)
+
+**CI (TypeScript)**: `tsc --noEmit` → `eslint` → `vitest run --coverage` (≥80% coverage).
+**CI (Python)**: `ruff` → `pytest --cov`.
+**CI (Flutter)**: `dart analyze` → `flutter test --coverage`.
+
+---
+
+## Development Discipline
+
+- **Conventional commits** throughout — same Git discipline as every lab
+- **AI as reviewer, not generator** — first attempt always written by hand; AI reviews complex integration points (MQTT routing, sync protocol, automation rule engine)
+- **Branch workflow**: feature branches → PR → CI green → merge
+
+---
+
 ## Build Milestones
 
 - [ ] M1: MQTT broker + first Arduino node sending data to Grafana

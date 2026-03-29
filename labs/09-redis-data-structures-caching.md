@@ -23,7 +23,9 @@ structure. Understand why each structure exists, not just how to use it.
 - Atomic operations with Lua (why multi-command sequences aren't safe)
 - Redis Streams vs Kafka (when the simpler option is sufficient)
 
-**Testing requirement**: Integration tests using `testcontainers-node` to spin up a real Redis instance. This is the correct pattern for testing code that depends on external services.
+**Local environment**: Redis in `docker-compose.yml` for development. `docker compose up -d` gives you a running Redis instance for manual exploration.
+
+**Testing requirement**: Integration tests using `testcontainers-node` to spin up a real Redis instance (CI uses testcontainers, not the dev compose). **CI**: `tsc --noEmit` → `eslint` → `vitest run --coverage` (≥80% coverage).
 
 **AI usage note**: When choosing between data structures, decide yourself first. Then ask AI: *"I chose sorted set for [use case]. What are the tradeoffs of using a hash instead?"*
 

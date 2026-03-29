@@ -21,7 +21,9 @@ in relational SQL. Understand when the document model is the right choice.
 - BSON types and their gotchas (ObjectId is not a string)
 - The N+1 problem in MongoDB and how `$lookup` solves it
 
-**Testing requirement**: Integration tests with `testcontainers-node` + MongoDB. Test the aggregation pipeline with known data and assert expected output. Test TTL index behaviour by manipulating `createdAt` dates.
+**Local environment**: MongoDB in `docker-compose.yml` for development. `docker compose up -d` gives you a running instance for manual exploration and Compass access.
+
+**Testing requirement**: Integration tests with `testcontainers-node` + MongoDB (CI uses testcontainers, not the dev compose). Test the aggregation pipeline with known data and assert expected output. Test TTL index behaviour by manipulating `createdAt` dates. **CI**: `tsc --noEmit` → `eslint` → `vitest run --coverage` (≥80% coverage).
 
 **AI usage note**: Aggregation pipeline syntax is verbose. Use AI freely for syntax help. The concepts — what each stage does — should be your own understanding.
 

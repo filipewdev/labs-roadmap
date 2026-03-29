@@ -22,7 +22,9 @@ no auth libraries, just the protocols understood from the ground up.
 - Token reuse detection as a signal of theft
 - RBAC: permission checks that live in the DB, not in application code
 
-**Testing requirement**: Integration tests for every flow. Specifically: token reuse detection (use a refresh token twice, verify both become invalid), RBAC rejection, TOTP with correct and incorrect codes. Use `testcontainers` for the database.
+**Local environment**: PostgreSQL in `docker-compose.yml` for development. `docker compose up -d` gives you the database for local testing.
+
+**Testing requirement**: Integration tests for every flow. Specifically: token reuse detection (use a refresh token twice, verify both become invalid), RBAC rejection, TOTP with correct and incorrect codes. Use `testcontainers` for the database in CI. **CI**: `tsc --noEmit` → `eslint` → `vitest run --coverage` (≥80% coverage).
 
 **AI usage note**: Use AI to verify your understanding of security concepts, not to write security code. Security bugs are invisible until they're catastrophic.
 

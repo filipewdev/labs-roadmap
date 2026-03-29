@@ -23,7 +23,9 @@ rate limiting, and usage tracking — the infrastructure every AI product needs.
 - Cost estimation from token counts
 - Why you want a proxy layer in front of AI APIs in production
 
-**Testing requirement**: Unit tests for cache key generation and cost estimation. Integration test that verifies the rate limiter fires at the correct threshold.
+**Local environment**: `docker-compose.yml` with Redis and PostgreSQL. `docker compose up -d` gives you both services for local development. The Anthropic API key is loaded from `.env` (never committed).
+
+**Testing requirement**: Unit tests for cache key generation and cost estimation. Integration test that verifies the rate limiter fires at the correct threshold. **CI**: `tsc --noEmit` → `eslint` → `vitest run --coverage` (≥80% coverage).
 
 **AI usage note**: You're building an AI wrapper with AI help. Use it — ask it to review your streaming implementation specifically. Streaming bugs are subtle.
 

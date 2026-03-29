@@ -21,7 +21,7 @@ the ML ecosystem — without relying on magic you don't understand.
 - `dtype` and why `float32` vs `float64` matters for GPU memory
 - The training loop: forward pass → loss → backward pass → optimizer step
 
-**Testing requirement**: pytest tests for your NumPy utility functions. Learn `pytest.approx` for floating-point comparison.
+**Testing requirement**: pytest tests for your NumPy utility functions. Learn `pytest.approx` for floating-point comparison. **CI**: `ruff` → `pytest --cov`.
 
 **AI usage note**: Python syntax questions are fine for AI. The concepts — why vectorization, what a tensor is, how backprop works — require your own understanding to be useful.
 

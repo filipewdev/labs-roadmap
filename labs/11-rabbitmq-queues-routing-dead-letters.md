@@ -23,7 +23,9 @@ Queue instead of disappearing silently.
 - Dead Letter Exchanges: where messages go when they can't be processed
 - Message durability: `amqp.Persistent` (survives broker restart)
 
-**Testing requirement**: Unit tests for message routing logic. Integration test: publish a message designed to fail 3 times and verify it appears in the DLQ.
+**Local environment**: RabbitMQ (with management plugin) in `docker-compose.yml`. `docker compose up -d` gives you the broker and management UI at `http://localhost:15672`.
+
+**Testing requirement**: Unit tests for message routing logic. Integration test: publish a message designed to fail 3 times and verify it appears in the DLQ. **CI**: `go vet` → `golangci-lint` → `go test -cover` (≥70% coverage).
 
 **AI usage note**: AMQP concepts are genuinely complex. Use AI freely to clarify: "What's the difference between a fanout and topic exchange?" Understanding the concept is the goal.
 

@@ -22,7 +22,7 @@ Linux kernel features — no Docker involved until the end.
 - `pivot_root`: how a container gets its own filesystem root
 - Why containers are not VMs (shared kernel)
 
-**Testing requirement**: Shell test script that starts the mini-container with a memory limit, runs a memory-hungry process, and asserts it was killed. Manual verification is acceptable for namespace isolation.
+**Testing requirement**: Shell test script that starts the mini-container with a memory limit, runs a memory-hungry process, and asserts it was killed. Manual verification is acceptable for namespace isolation. **CI**: `go vet` → `golangci-lint` → `go test -cover`. Shell test runs in CI on an Ubuntu runner with root access.
 
 **AI usage note**: Prefer `man unshare`, `man cgroups`, and kernel docs over AI for this lab. AI is fine for Go syntax questions.
 

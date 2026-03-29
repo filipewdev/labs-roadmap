@@ -22,7 +22,7 @@ dashboard from scratch — no importing JSON templates.
 - The scrape interval and its effect on metric resolution
 - Alert rule evaluation vs notification delay
 
-**Testing requirement**: Write a `load-test.sh` script that generates traffic against your server, then manually verify the metrics change correctly in Grafana. Document what you observed in the README.
+**Testing requirement**: Unit tests for your HTTP handlers using Go's `testing` package. Write a `load-test.sh` script that generates traffic, then verify metrics in Grafana and document observations in the README. **CI**: `go vet` → `golangci-lint` → `go test -cover` (≥70% coverage).
 
 **AI usage note**: When writing PromQL queries, try writing them yourself in the Prometheus UI first. Only use AI to explain what a query returns, not to write it.
 
