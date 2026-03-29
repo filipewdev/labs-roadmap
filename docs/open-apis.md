@@ -210,6 +210,119 @@ GET /v1/archive?latitude=-15.77&longitude=-47.92&start_date=2024-01-01&end_date=
 
 ---
 
+## Payments
+
+### Stripe (Test Mode)
+**URL**: https://stripe.com/docs/api
+**Auth**: Test API keys (no real money, no credit card needed to get keys)
+
+```
+POST /v1/checkout/sessions          → Create a payment page (Checkout)
+POST /v1/payment_intents            → Create a payment intent (custom UI)
+GET  /v1/payment_intents/{id}       → Check payment status
+POST /v1/refunds                    → Refund a payment
+Webhooks: payment_intent.succeeded, checkout.session.completed
+```
+
+**Why Stripe specifically**: It's the international standard. Every company
+you'd work for abroad either uses Stripe or something that works like it.
+The test mode is fully functional — you can create payments, trigger webhooks,
+and test error scenarios without spending money.
+
+**Test cards**:
+```
+4242 4242 4242 4242  → Always succeeds
+4000 0000 0000 9995  → Always declines (insufficient funds)
+4000 0000 0000 3220  → Requires 3D Secure authentication
+```
+
+**Best for**: Capstone C1 (therapy platform — session payment, cancellation refund policy), Lab 03 (REST API design — add a payment endpoint and handle Stripe webhooks)
+
+---
+
+## Cloud Storage
+
+### Backblaze B2
+**URL**: https://www.backblaze.com/docs/cloud-storage
+**Auth**: Application key (free tier: 10GB storage, 1GB/day download)
+**S3-compatible**: Yes — use any S3 SDK with B2 endpoint
+
+```
+# Works with standard S3 SDKs:
+const s3 = new S3Client({
+  endpoint: 'https://s3.us-west-004.backblazeb2.com',
+  region: 'us-west-004',
+  credentials: { accessKeyId: '...', secretAccessKey: '...' }
+})
+```
+
+**Best for**: Lab 17 (Bash — `pg_dump | gzip | aws s3 cp` using B2's S3 endpoint), Lab 23 (Pi backup script → cloud), Capstone C1 (session report attachments)
+
+### Cloudflare R2
+**URL**: https://developers.cloudflare.com/r2/
+**Auth**: API token (free tier: 10GB storage, no egress fees)
+**S3-compatible**: Yes
+
+**Best for**: Same use cases as B2. R2 has no egress fees, which is better
+if you're serving files to users (e.g., media in the homelab). B2 is simpler
+to set up.
+
+**Why not AWS S3 directly**: S3 has a free tier (5GB for 12 months) but
+requires a credit card and can generate unexpected charges. B2 and R2 are
+genuinely free for lab-scale usage with no billing surprises.
+
+---
+
+## Communication Services
+
+### Resend (Email)
+**URL**: https://resend.com/docs
+**Auth**: API key (free tier: 100 emails/day, 3000/month)
+
+```
+POST /emails
+{
+  "from": "Losângela <appointments@yourdomain.com>",
+  "to": ["client@email.com"],
+  "subject": "Appointment reminder — tomorrow at 14:00",
+  "html": "<p>Your session is confirmed for tomorrow.</p>"
+}
+```
+
+**Why Resend over SendGrid/Mailgun**: Developer experience. The API is clean,
+TypeScript SDK is first-class, and the free tier is enough for a real therapy
+practice. It's also what modern startups use — relevant for international roles.
+
+**Best for**: Capstone C1 (appointment reminders, confirmation emails), Lab 19 (n8n workflow — form → email)
+
+### Twilio (SMS)
+**URL**: https://www.twilio.com/docs/sms
+**Auth**: Account SID + Auth Token (free trial with $15 credit, no credit card for trial)
+
+```
+POST /2010-04-01/Accounts/{sid}/Messages.json
+  From: +1234567890 (Twilio number)
+  To: +5561999999999
+  Body: "Your session with Losângela is tomorrow at 14:00."
+```
+
+**Best for**: Capstone C1 (SMS reminders as a WhatsApp fallback). SMS is
+less common in Brazil (WhatsApp dominates), but understanding Twilio's API
+is valuable for international roles where SMS is the primary channel.
+
+### Z-API / Evolution API (WhatsApp)
+**URL**: https://www.z-api.io / https://doc.evolution-api.com
+**Auth**: Instance token (Z-API has a free trial; Evolution is self-hosted and free)
+
+**Why these exist**: WhatsApp has no free public API. Meta's official Business
+API requires a business account and approval. Z-API and Evolution are
+Brazilian-built bridges that let you send WhatsApp messages programmatically.
+
+**Best for**: Capstone C1 (primary reminder channel — WhatsApp is how
+Brazilians actually communicate), Lab 19 (n8n workflow → WhatsApp notification)
+
+---
+
 ## Developer Tools
 
 ### GitHub REST API
@@ -268,4 +381,6 @@ GET /food/enforcement.json?search=status:ongoing
 | **19** n8n | GitHub API + BrasilAPI | GitHub PR webhook, enrich with contributor data; also: CPF/CNPJ lookup workflow |
 | **20** AI API | Open-Meteo | Give the AI real Brasília weather context; user asks "should I bring an umbrella?" and AI has actual data |
 | **24** Arduino | Open-Meteo | Compare Arduino DHT22 reading against official Brasília weather — surfaces sensor calibration issues |
-| **C1** Therapy app | BrasilAPI/holiday | Auto-block scheduling on national holidays; CEP lookup for client address |
+| **17** Bash scripts | Backblaze B2 | `pg_dump \| gzip \| aws s3 cp` — the backup script now has a real destination |
+| **23** Raspberry Pi | Backblaze B2 / R2 | Backup script → cloud storage via cron |
+| **C1** Therapy app | BrasilAPI/holiday + Stripe + Resend + Twilio + Z-API | Holidays for auto-blocking, payments for sessions, email/SMS/WhatsApp for reminders |

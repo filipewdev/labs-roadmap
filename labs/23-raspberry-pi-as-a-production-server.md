@@ -13,7 +13,7 @@ one of your previous labs — everything that a VPS tutorial skips.
 - [ ] Docker + Docker Compose installed
 - [ ] One previous lab deployed and accessible externally
 - [ ] DuckDNS dynamic DNS configured
-- [ ] Backup script running via cron (database dump → cloud storage)
+- [ ] Backup script running via cron (database dump → Backblaze B2 or Cloudflare R2 via S3-compatible CLI)
 - [ ] CPU temperature visible in Grafana via Node Exporter
 
 **Key concepts**:
