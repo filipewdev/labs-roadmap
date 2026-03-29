@@ -168,6 +168,17 @@ Shield: DDoS protection (Standard free, Advanced paid)
 
 ---
 
+## API Paradigms & Architecture
+
+| Lab tool | AWS equivalent | SAA exam relevance |
+|---|---|---|
+| GraphQL (Mercurius) | **AWS AppSync** | Managed GraphQL with real-time subscriptions, DynamoDB/Lambda resolvers, Cognito auth |
+| DataLoader (N+1 batching) | **AppSync pipeline resolvers** | Chain multiple data sources in a single GraphQL query |
+| System design practice | **AWS Well-Architected Framework** | The 6 pillars (operational excellence, security, reliability, performance, cost, sustainability) map to system design tradeoffs |
+| ADRs | **AWS Well-Architected Tool** | Reviews workloads against the pillars — same concept as documenting decisions |
+
+---
+
 ## Storage
 
 | Lab tool | AWS equivalent | SAA exam relevance |

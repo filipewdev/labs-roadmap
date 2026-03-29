@@ -84,7 +84,7 @@ Do these three first. They install the habits everything downstream depends on.
 
 | Lab | File | Time | Language |
 |---|---|---|---|
-| [17 — Bash Scripting Fundamentals](../labs/17-bash-scripting-fundamentals.md) | `labs/17-bash-scripting-fundamentals.md` | 5h | Bash |
+| [17 — Bash Scripting Fundamentals](../labs/17-bash-scripting-fundamentals.md) | `labs/17-bash-scripting-fundamentals.md` | 6h | Bash |
 | [18 — Linux System Administration](../labs/18-linux-system-administration.md) | `labs/18-linux-system-administration.md` | 6h | Shell + systemd |
 
 ---
@@ -102,8 +102,8 @@ Do these three first. They install the habits everything downstream depends on.
 
 | Lab | File | Time | Language |
 |---|---|---|---|
-| [21 — Flutter Biometric Auth + Secure Storage](../labs/21-flutter-biometric-auth-secure-storage.md) | `labs/21-flutter-biometric-auth-secure-storage.md` | 7h | Dart |
-| [22 — Flutter Local-First + Offline Sync](../labs/22-flutter-local-first-offline-sync.md) | `labs/22-flutter-local-first-offline-sync.md` | 10h | Dart + TypeScript |
+| [21 — Flutter Biometric Auth + Secure Storage (BLoC)](../labs/21-flutter-biometric-auth-secure-storage.md) | `labs/21-flutter-biometric-auth-secure-storage.md` | 8h | Dart |
+| [22 — Flutter Local-First + Offline Sync (Riverpod)](../labs/22-flutter-local-first-offline-sync.md) | `labs/22-flutter-local-first-offline-sync.md` | 11h | Dart + TypeScript |
 
 ---
 
@@ -122,6 +122,15 @@ Do these three first. They install the habits everything downstream depends on.
 | Lab | File | Time | Language |
 |---|---|---|---|
 | [26 — Python ML Fundamentals](../labs/26-python-ml-fundamentals.md) | `labs/26-python-ml-fundamentals.md` | 8h | Python |
+
+---
+
+## Phase 13 — API Paradigms & Architecture
+
+| Lab | File | Time | Language |
+|---|---|---|---|
+| [27 — GraphQL API](../labs/27-graphql-api.md) | `labs/27-graphql-api.md` | 7h | TypeScript |
+| [28 — System Design Practice](../labs/28-system-design-practice.md) | `labs/28-system-design-practice.md` | 8h | Diagrams + prose |
 
 ---
 

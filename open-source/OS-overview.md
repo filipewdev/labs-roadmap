@@ -14,7 +14,7 @@ conflated but are genuinely different:
 | | Creating a Library | Contributing to OSS |
 |---|---|---|
 | **Codebase ownership** | Yours | Someone else's |
-| **Primary skill** | API design, packaging, versioning | Reading unfamiliar code, communication |
+| **Primary skill** | API design, packaging, versioning | Reading unfamiliar code, giving & receiving code review, communication |
 | **Audience** | Developers who will depend on your code | Maintainers who gatekeep a project |
 | **Success metric** | Downloads, happy users, low issue count | Merged PR, maintainer relationship |
 | **What it signals to employers** | You can design APIs others will use | You can navigate large codebases, work asynchronously, communicate in writing |
@@ -31,8 +31,8 @@ OS-A  Publish an npm library (br-utils from Lab 00-A)
       ↳ TypeScript, dual ESM/CJS, TypeDoc, semver, automated publishing
       ↳ ~8 hours
 
-OS-B  Make your first real open source contribution
-      ↳ Any language, reading unfamiliar code, PR workflow, code review
+OS-B  Make your first real open source contribution + give a code review
+      ↳ Any language, reading unfamiliar code, PR workflow, receiving AND giving code review
       ↳ 6–10 hours (spread over 2 weekends)
 
 OS-C  Publish a pub.dev package (br_validators for Flutter)

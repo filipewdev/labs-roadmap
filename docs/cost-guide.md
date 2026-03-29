@@ -128,7 +128,8 @@
 |---|---|---|
 | Flutter SDK | Free | |
 | Android Studio / Xcode | Free | Xcode requires a Mac |
-| flutter_bloc, flutter_riverpod | Free | pub.dev packages |
+| flutter_bloc (Lab 21) | Free | pub.dev package |
+| flutter_riverpod (Lab 22) | Free | pub.dev package |
 | flutter_secure_storage | Free | |
 | Drift (SQLite ORM) | Free | |
 | **Total** | **Free** | |
@@ -165,6 +166,7 @@ This is where hardware costs appear.
 | Resource | Cost | Notes |
 |---|---|---|
 | Mercurius, Pothos (GraphQL) | Free | npm packages |
+| PostgreSQL (Lab 27 docker-compose) | Free | Docker image |
 | Excalidraw / Mermaid (diagrams) | Free | |
 | **Total** | **Free** | |
 
