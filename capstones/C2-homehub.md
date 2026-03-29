@@ -158,6 +158,24 @@ Last-known values from local SQLite when away.
 
 ---
 
+## Architecture Decision Records (ADRs)
+
+Write at least 3 ADRs for key architectural decisions. These demonstrate the
+thinking behind the system — not just what you built, but *why* you built it
+that way.
+
+**Required ADRs** (write as you make each decision, not retroactively):
+- [ ] ADR-001: Why MQTT over HTTP for sensor communication
+- [ ] ADR-002: Why local-first (Drift SQLite) instead of server-only data
+- [ ] ADR-003: A decision of your choice (e.g., automation engine architecture, ONNX vs TFLite, WebSocket vs polling for mobile)
+
+Use the format from Lab 28 (System Design Practice): Status, Context, Decision,
+Alternatives considered, Consequences.
+
+Store ADRs in `docs/adr/` in the repo. They are part of the deliverable.
+
+---
+
 ## Build Milestones
 
 - [ ] M1: MQTT broker + first Arduino node sending data to Grafana

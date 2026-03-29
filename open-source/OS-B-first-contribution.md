@@ -262,7 +262,7 @@ Both previously returned `false` and now return `true`.
 
 ---
 
-## Part 5: Handling Code Review
+## Part 5: Handling Code Review (Receiving)
 
 Code review on an open source contribution is different from internal team review.
 The maintainer doesn't know you. They're gatekeeping their project's quality.
@@ -291,6 +291,60 @@ learned in your lab README.
 - Reply to specific comments, not just "done" on the PR
 - Mark conversations as resolved after addressing them
 - Re-request review after pushing changes
+
+---
+
+## Part 5b: Giving Code Reviews
+
+A senior developer spends 30–40% of their time reviewing other people's code.
+This is a skill most tutorials never teach. As part of this lab, you will also
+**review someone else's PR** on any open source project.
+
+### How to Find a PR to Review
+
+- Browse the PRs tab of a project you've been using in your labs
+- Look for recently opened PRs that haven't received feedback yet
+- Small PRs (under 200 lines) are best for your first review
+
+### What a Good Review Looks Like
+
+Don't just say "LGTM." Look for these things:
+
+**Correctness**: Does the code do what the PR description says? Are there
+edge cases the author missed?
+
+**Tests**: Are there tests? Do they test the right thing? Are they testing
+implementation details or behaviour?
+
+**Style**: Does the code match the project's existing conventions? (Not your
+preferences — the project's.)
+
+**Security**: Is user input validated? Are there injection risks? Does it
+handle errors or just swallow them?
+
+### How to Write Review Comments
+
+```markdown
+# Good review comment:
+"This `parseInt()` call will silently drop leading zeros from CEP strings
+like '01310-100'. Consider using `.replace(/\D/g, '')` instead to preserve
+the original digits. See: MDN docs on parseInt."
+
+# Bad review comment:
+"This is wrong."
+"Why didn't you use X?"
+"I would have done it differently."
+```
+
+The pattern: **what** you noticed → **why** it matters → **what** you'd suggest.
+Always explain the reasoning. A comment without reasoning is not a review — it's
+an opinion.
+
+### Done When (Code Review)
+
+- [ ] You've left a substantive review (not just "LGTM") on at least one open PR
+- [ ] Your review includes at least one specific, actionable suggestion with reasoning
+- [ ] You were respectful and constructive — the author should feel helped, not attacked
 
 ---
 

@@ -1,8 +1,8 @@
 # Labs Roadmap
 
-> A structured curriculum of 29 weekend engineering labs covering backend systems,
-> infrastructure, databases, mobile, IoT, and ML — each one standalone,
-> test-first, and documented.
+> A structured curriculum of 31 weekend engineering labs covering backend systems,
+> infrastructure, databases, mobile, IoT, ML, and system design — each one
+> standalone, test-first, and documented.
 
 [![Labs completed](https://img.shields.io/github/issues-closed/filipewdev/labs-roadmap?label=labs%20completed&color=22c55e)](https://github.com/YOURNAME/labs-roadmap/issues?q=is%3Aissue+is%3Aclosed)
 [![In progress](https://img.shields.io/github/issues/filipewdev/labs-roadmap?label=in%20progress&color=3b82f6)](https://github.com/YOURNAME/labs-roadmap/issues?q=is%3Aissue+is%3Aopen)
@@ -104,6 +104,10 @@ Phase 11 — Hardware & IoT
 Phase 12 — ML
   26    Python ML Fundamentals              Python · 8h
 
+Phase 13 — API Paradigms & Architecture
+  27    GraphQL API                         TypeScript · 7h
+  28    System Design Practice              Diagrams + prose · 8h
+
 ── Open Source Track ────────────────────────────────────────────────────
   OS-A  Publish npm Library                 (after 00-A)
   OS-B  First OSS Contribution              (after 00-C)
@@ -142,7 +146,7 @@ After that: any order based on what your current work needs or what interests yo
 | [AWS context](./docs/aws-context.md) | AWS managed equivalent for every tool used |
 | [Open APIs](./docs/open-apis.md) | BrasilAPI, BACEN, IBGE, NASA and others — mapped to labs |
 | [README template](./docs/readme-template.md) | Template for every implementation repo |
-| [Advanced labs](./docs/optional-advanced-labs.md) | Optional Rust, Lua, Elixir, Zig, and Homelab Infrastructure tracks |
+| [Advanced labs](./docs/optional-advanced-labs.md) | Optional tracks: Rust, Lua, Elixir, Zig, Homelab Infra, Networking & Security, Career |
 | [Homelab architecture](./docs/homelab-architecture.md) | Vision doc for a self-hosted personal cloud |
 | [Capstone I spec](./capstones/C1-therapy-platform.md) | Therapy scheduling platform — full specification |
 | [Capstone II spec](./capstones/C2-homehub.md) | HomeHub IoT + mobile — full specification |
