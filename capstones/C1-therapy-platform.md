@@ -180,6 +180,10 @@ This is where everything from the labs comes together.
 7. Failed messages → DLQ (same pattern as Lab 11)
 ```
 
+**Scheduler implementation**: Use **BullMQ** (Redis-backed job queue) with a repeatable job running every 5 minutes. BullMQ gives you: reliable scheduling that survives server restarts, job deduplication (won't run twice if the previous run is still going), built-in retry logic, and a dashboard (Bull Board) for monitoring. This is the application-level equivalent of AWS EventBridge rules — an event (the timer) triggers an action (the reminder query).
+
+**Why BullMQ over cron**: A cron job (`node-cron` or OS-level `crontab`) works for simple cases, but doesn't survive app restarts gracefully, doesn't prevent concurrent runs, and has no built-in retry. BullMQ handles all of this because the schedule state lives in Redis, not in the process. This distinction matters when your app runs in Docker and containers restart.
+
 ---
 
 ## LGPD Compliance Considerations
