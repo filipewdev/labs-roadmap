@@ -1,0 +1,375 @@
+# Advanced Optional Labs
+
+> These are extra labs for when a core lab feels too easy, or when you want
+> to go deeper into a specific language ecosystem. None of them are prerequisites
+> for anything else. Do them because they interest you, not because you feel obligated.
+>
+> Each one has a **difficulty signal**: ★ (challenging), ★★ (hard), ★★★ (genuinely difficult).
+
+---
+
+## Rust Track
+
+> Why Rust: memory safety without a garbage collector, the fastest compiled language
+> for systems work, increasingly used in embedded (RTOS, IoT firmware) and
+> infrastructure (Cloudflare workers, Linux kernel modules, AWS Firecracker).
+> It has the steepest learning curve here — the borrow checker will fight you.
+> That fight is the learning.
+
+---
+
+### Rust-A — CLI Tool: Real-World File Processor ★
+
+**Companion to**: Lab 00-A (Testing), Lab 17 (Bash scripting)  
+**Time box**: 8 hours  
+**What**: Build a `logparse` CLI tool that reads Nginx JSON access logs,
+filters by status code, aggregates by endpoint, and outputs a report.
+
+**Why Rust for this**:
+- Rust's `clap` crate makes CLI ergonomics excellent
+- File I/O and JSON parsing without a garbage collector forces you to understand
+  ownership before you need it for harder Rust
+- The tool is genuinely useful (replaces the `jq` pipeline in Lab 17)
+
+**What you'll learn**:
+- Rust ownership and borrowing (the borrow checker's rules)
+- Error handling with `?` operator and `anyhow` / `thiserror`
+- Iterators and closures (Rust's functional-ish style)
+- `serde` for JSON deserialization
+- `clap` for argument parsing with auto-generated help text
+
+**Done when**:
+- [ ] `logparse --file access.log --status 5xx --top 10` works
+- [ ] Output: table of top 10 paths by 5xx count with percentage
+- [ ] Streams the file (doesn't load entire file into memory)
+- [ ] Rust tests (`cargo test`) cover the parsing and aggregation logic
+- [ ] Compiles with `--release` and is under 3MB binary
+
+**Key Rust concept to internalize**: Why does this not compile?
+```rust
+let v = vec![1, 2, 3];
+let first = &v[0];  // borrow
+v.push(4);          // ERROR: cannot borrow `v` as mutable because it's also borrowed
+println!("{}", first);
+```
+The compiler prevents a use-after-reallocation bug that would be a silent crash in C.
+
+**Testing**: Unit tests for log line parsing, aggregation logic. Integration test
+that processes a generated log file and asserts the top endpoint is correct.
+
+---
+
+### Rust-B — HTTP Server with Axum ★★
+
+**Companion to**: Lab 03 (REST API)  
+**Time box**: 10 hours  
+**What**: Reimplement Lab 03's book collection REST API in Rust using Axum.
+Exact same API contract — compare the two implementations.
+
+**Why this matters**: You'll write the same API twice, in TypeScript and Rust.
+The comparison is the education. What's easier? What's harder? What does the
+type system catch in Rust that TypeScript misses?
+
+**What you'll learn**:
+- Axum routing and extractors (`Path`, `Query`, `Json`, `State`)
+- `async`/`await` in Rust (Tokio runtime)
+- Rust's type system for API design (exhaustive match on error types)
+- `sqlx` for PostgreSQL queries (compile-time SQL verification — this is extraordinary)
+- Why Rust's error handling via `Result<T, E>` beats TypeScript's `try/catch`
+
+**Done when**:
+- [ ] All CRUD endpoints work with identical JSON contract to Lab 03
+- [ ] PostgreSQL via `sqlx` with compile-time query checking
+- [ ] Proper error responses (not 500 for everything)
+- [ ] Integration tests using `axum::test` (no real HTTP server)
+- [ ] `cargo clippy` passes with no warnings
+
+**Key moment**: When you use `sqlx::query_as!()`, the macro verifies your SQL
+query against the actual database schema at *compile time*. A typo in a column
+name is a compile error, not a runtime error at 3am in production. This is
+genuinely better than anything TypeScript ORM can offer.
+
+---
+
+### Rust-C — Build a Memory-Safe CSV Parser ★★
+
+**Companion to**: Lab 26 (Python ML), Lab 08 (PostgreSQL)  
+**Time box**: 8 hours  
+**What**: Write a CSV parser from scratch (no `csv` crate for the core parser).
+Then use it to parse the IBGE municipalities dataset and load it into PostgreSQL.
+
+**Why**: Writing a parser in Rust teaches you why memory layout matters,
+how string slicing without copying works (zero-copy parsing with lifetimes),
+and how Rust's ownership model enables performance patterns impossible in GC languages.
+
+**Done when**:
+- [ ] Custom parser handles: quoted fields, escaped quotes, multi-line fields
+- [ ] Zero-copy: parsed fields are `&str` slices of the original input, not `String` copies
+- [ ] Benchmarked against the `csv` crate using `criterion`
+- [ ] Loads IBGE data into PostgreSQL via `sqlx`
+- [ ] Property-based tests using `proptest` (generate random CSV and verify round-trip)
+
+---
+
+### Rust-D — WebAssembly Module ★★
+
+**Companion to**: Lab 01 (TypeScript Types), Lab 04 (WebSocket)  
+**Time box**: 8 hours  
+**What**: Write a high-performance text processing module in Rust, compile it to
+WebAssembly, and call it from your TypeScript code. Use case: fast CPF batch
+validation for a form that validates 10,000 CPFs server-side in a bulk import.
+
+**Done when**:
+- [ ] Rust crate compiles to `.wasm` via `wasm-pack`
+- [ ] TypeScript calls the Wasm module (no JS in the hot path)
+- [ ] Benchmarked: Wasm vs pure TypeScript for 100k CPF validations
+- [ ] Tests in both Rust (`cargo test`) and TypeScript (testing the Wasm interface)
+
+**The result you should see**: Wasm is 5–15x faster for CPU-bound tasks
+like this. The benchmark result becomes part of your README and is a
+concrete, credible performance claim.
+
+---
+
+### Rust-E — Embedded: GPIO Control on Raspberry Pi ★★★
+
+**Companion to**: Lab 23 (Raspberry Pi), Lab 24 (Arduino)  
+**Time box**: 10 hours  
+**What**: Control a GPIO pin on the Raspberry Pi using Rust instead of Python.
+Turn an LED on and off from a REST API written in Rust (Axum).
+
+**Why this is ★★★**: Cross-compilation (compile on laptop, run on ARM Pi),
+`unsafe` Rust for hardware register access, and understanding why embedded
+Rust is displacing C in new firmware projects.
+
+**Done when**:
+- [ ] Cross-compiled from x86 laptop to ARM64 Pi using `cross` tool
+- [ ] Axum server runs on Pi, responds to `POST /led/{on|off}`
+- [ ] GPIO controlled via `rppal` crate (safe Rust GPIO)
+- [ ] One `unsafe` block — write to a GPIO register directly — with comment explaining why it's safe
+
+---
+
+## Lua Track
+
+> Why Lua: it's embedded in Redis (Lua scripts), Nginx (OpenResty), Neovim,
+> World of Warcraft, and many IoT firmwares (NodeMCU for ESP8266/ESP32).
+> It's a tiny language (30-page manual) that takes 2 hours to learn syntax-wise.
+> The value is in the specific contexts where it lives.
+
+---
+
+### Lua-A — Nginx Scripting with OpenResty ★
+
+**Companion to**: Lab 05 (Nginx), Lab 16 (Kong)  
+**Time box**: 6 hours  
+**What**: Replace Kong with OpenResty (Nginx + Lua) and implement three
+Kong-like features yourself: JWT verification, rate limiting, and request logging.
+
+**Why**: Kong is built on OpenResty. Understanding the substrate makes you
+a much better Kong (and Nginx) user. Also, many companies use OpenResty
+directly instead of Kong for maximum control.
+
+**What you'll learn**:
+- Lua syntax (tables, functions, coroutines in 30 min)
+- The `ngx.*` API: `ngx.req`, `ngx.resp`, `ngx.var`, `ngx.log`
+- Shared memory (`lua_shared_dict`) for rate limiter state across workers
+- Why Lua in Nginx is fast: runs inside Nginx worker processes, no subprocess overhead
+
+**Done when**:
+- [ ] OpenResty in Docker, proxying to Lab 03's TypeScript API
+- [ ] `access_by_lua_block`: verify JWT signature using `resty.jwt`
+- [ ] `access_by_lua_block`: rate limiter using `lua_shared_dict` (atomic increment)
+- [ ] `log_by_lua_block`: write structured JSON access log
+- [ ] All three features tested with `curl` test script
+
+**Key insight**: Kong's rate limiting plugin is ~150 lines of Lua. After this lab
+you could read that source code and understand it completely.
+
+---
+
+### Lua-B — Redis Scripting ★
+
+**Companion to**: Lab 09 (Redis)  
+**Time box**: 4 hours  
+**What**: Write 5 atomic Redis operations as Lua scripts. These cannot be
+implemented safely without Lua (or Lua-equivalent transactions).
+
+**Scripts to implement**:
+
+```lua
+-- 1. getset_with_expiry(key, value, ttl)
+-- Atomically: get old value, set new value with TTL
+-- Needed when: you want the previous value AND to update atomically
+
+-- 2. rate_limit(key, limit, window_seconds) → {allowed: bool, remaining: int}
+-- Atomically: increment counter, set expiry on first call, return count
+
+-- 3. pop_and_push(source_list, dest_list, max_items) → moved_count
+-- Atomically move up to N items from one list to another
+-- Needed when: implementing a work queue with a "processing" list
+
+-- 4. sorted_set_upsert_with_decay(key, member, score, decay_factor)
+-- Update score, but apply exponential decay to existing score first
+-- Used for: trending algorithms (old high-score items decay over time)
+
+-- 5. conditional_set(key, value, ttl, expected_value) → {updated: bool}
+-- Set only if current value matches expected (optimistic locking)
+```
+
+**Done when**:
+- [ ] All 5 scripts implemented and callable from TypeScript via `redis.eval()`
+- [ ] Each script has tests that verify atomicity (call from two processes simultaneously)
+- [ ] Scripts benchmarked: Lua vs equivalent multi-command approach (measure RTTs saved)
+
+---
+
+### Lua-C — IoT Firmware for ESP8266 / NodeMCU ★★
+
+**Companion to**: Lab 24 (Arduino + MQTT)  
+**Time box**: 8 hours  
+**Hardware**: ESP8266 NodeMCU board (~R$20) — cheaper than Arduino + WiFi shield  
+**What**: Replace the Arduino + Python bridge with a single ESP8266 running
+Lua firmware. The ESP8266 reads the DHT22 sensor AND publishes directly to
+MQTT over WiFi. No serial bridge needed.
+
+**Why this is significant**: This is a real production IoT pattern.
+The ESP8266 is used in millions of commercial IoT devices. Lua on NodeMCU
+gives you scripting speed on hardware with 80KB of RAM.
+
+**What you'll learn**:
+- NodeMCU Lua API: `gpio`, `i2c`, `net`, `mqtt`, `tmr`
+- The event loop model in Lua (single-threaded, callback-based — familiar from Node.js)
+- WiFi connection management (reconnect on drop)
+- MQTT client in Lua (directly to Mosquitto, no bridge)
+- Flash memory constraints: your entire program must fit in ~256KB
+
+**Done when**:
+- [ ] ESP8266 reads DHT22 and publishes to MQTT over WiFi
+- [ ] Reconnects to WiFi and MQTT automatically on drop
+- [ ] Deep sleep between readings (extends battery life 100x)
+- [ ] OTA (over-the-air) firmware update working
+- [ ] All data from Lab 24's Grafana dashboard still populates correctly
+
+---
+
+### Lua-D — Game Scripting: Love2D Simple Game ★
+
+**Companion to**: Nothing — this is a fun one  
+**Time box**: 6 hours  
+**What**: Build a simple 2D game in Love2D (a Lua game framework). The game:
+a side-scrolling character that collects items. The twist: game logic and
+physics are data-driven from a JSON config file, and you implement the
+scripting API that modifies game behaviour at runtime (like WoW addons).
+
+**Why**: Game scripting is one of the places where Lua became dominant.
+Understanding why — the sandboxed execution model, the embeddability —
+teaches you something about language design that applies to how you think
+about scripting and DSLs in general.
+
+**Done when**:
+- [ ] Playable game: character moves, collects items, has a score
+- [ ] Level data in external JSON file (no hardcoded level design)
+- [ ] Modding API: a separate `mod.lua` file can change physics constants
+  and add items without modifying game source
+- [ ] One automated test: use Love2D's headless mode to simulate 10 frames
+  and assert expected game state
+
+---
+
+## Other Language Optional Labs
+
+---
+
+### Elixir-A — Concurrent Chat Server (Pattern Match Edition) ★★
+
+**Companion to**: Lab 04 (WebSocket Chat in Go)  
+**Time box**: 10 hours  
+**What**: Reimplement the WebSocket chat server in Elixir using Phoenix Channels.
+Compare with the Go version: same feature set, radically different concurrency model.
+
+**Why**: Elixir's actor model (Erlang/OTP) handles concurrency differently from
+Go's goroutines. Each connection is a lightweight process with isolated state.
+If one crashes, it restarts without affecting others. Go requires explicit error
+handling to achieve this. Elixir makes it structural.
+
+**What you'll learn**:
+- Pattern matching (Elixir's core feature, more powerful than switch)
+- Processes and message passing (OTP GenServer)
+- Phoenix Channels (the Elixir WebSocket framework, used in production at Discord)
+- "Let it crash" philosophy: why isolating failure is better than preventing it
+- Hot code reloading (upgrade a running server without restarting connections)
+
+**Done when**:
+- [ ] Same feature set as Lab 04: rooms, presence, typing indicators, heartbeat
+- [ ] Each connection is a supervised process (crashes don't affect other clients)
+- [ ] ExUnit tests for the Channel logic
+- [ ] README comparison: Go vs Elixir — lines of code, concurrency model, failure isolation
+
+---
+
+### Python-A — Async Python: FastAPI + httpx ★
+
+**Companion to**: Lab 03 (REST API)  
+**Time box**: 6 hours  
+**What**: Build the book collection API in Python with FastAPI, Pydantic validation,
+and async database access with `asyncpg`. Add a background task that enriches
+books with Open Library data on insert.
+
+**Why**: Python async (`async`/`await`) works very differently from JS/Go.
+Understanding the event loop, `asyncio`, and why you can have async Python
+code that's actually slower than sync is a common trap for Python beginners.
+
+**Done when**:
+- [ ] FastAPI with Pydantic v2 schema validation
+- [ ] `asyncpg` for non-blocking PostgreSQL queries
+- [ ] Background task via `asyncio` that calls Open Library API on book creation
+- [ ] `pytest-asyncio` tests for all endpoints
+- [ ] `hypercorn` ASGI server (or uvicorn) with proper shutdown handling
+
+---
+
+### Zig-A — Memory Allocator From Scratch ★★★
+
+**Companion to**: Lab 13 (Container internals)  
+**Time box**: 12 hours  
+**What**: Implement a simple arena memory allocator in Zig — a language designed
+as a safer C replacement. Then use it to parse a binary file format.
+
+**Why Zig**: It's gaining traction in systems programming as a C replacement
+(Bun.js is written in Zig, TigerBeetle DB is written in Zig). It has no hidden
+control flow, no hidden allocations, and explicit error handling. It will make
+you understand what languages like Rust and Go are actually doing for you.
+
+**This is genuinely hard.** Only do it if you're comfortable with C memory
+concepts (pointers, alignment, heap vs stack).
+
+**Done when**:
+- [ ] Arena allocator: allocate, reset (free all at once), destroy
+- [ ] Uses the allocator to parse a simple binary format (define your own)
+- [ ] No dynamic allocation outside the arena (verified by Zig's allocator interface)
+- [ ] Zig tests (`zig test`) with AddressSanitizer enabled
+
+---
+
+## How to Pick Your First Advanced Lab
+
+Answer these questions:
+
+**"I want to understand why Rust is hyped"** → Start with Rust-A (CLI tool).
+It's achievable in a weekend and the borrow checker will teach you more about
+memory than any book.
+
+**"I use Nginx every day and want to master it"** → Lua-A (OpenResty).
+You'll understand every Kong plugin after this.
+
+**"I want to do IoT without an Arduino"** → Lua-C (ESP8266 NodeMCU).
+One chip, WiFi built in, Lua scripting, real MQTT. Cheaper than Arduino + WiFi shield.
+
+**"I want to impress Go developers"** → Rust-B (Axum server).
+Rewriting Lab 03 in Rust and documenting what the type system caught
+that TypeScript couldn't is a genuinely impressive portfolio piece.
+
+**"I'm curious about different concurrency models"** → Elixir-A.
+The comparison between Go's CSP model and Erlang's actor model is one of the most
+interesting architectural discussions in systems programming.
