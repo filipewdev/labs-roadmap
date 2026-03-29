@@ -24,7 +24,9 @@ PyTorch vs ONNX vs ONNX INT8 and understand why each is different.
 - ARM NEON SIMD instructions (why ONNX Runtime is faster on ARM64)
 - MJPEG streaming: the simplest way to stream annotated video over HTTP
 
-**Testing requirement**: Unit tests for preprocessing and postprocessing functions. The inference itself is not unit-tested — test the code around it.
+**Testing requirement**: Unit tests for preprocessing and postprocessing functions. The inference itself is not unit-tested — test the code around it. **CI**: `ruff` → `pytest --cov` (≥70% coverage on preprocessing/postprocessing modules).
+
+**AI usage note**: ONNX export and quantization have subtle failure modes. Use AI freely for debugging model conversion: *"My ONNX INT8 export is producing garbage output — what could cause this?"* The ML concepts (what quantization trades off, what NMS does) should be your own understanding.
 
 ---
 

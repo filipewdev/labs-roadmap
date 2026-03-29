@@ -23,7 +23,9 @@ fundamentally different from a queue.
 - Offset management — at-least-once vs at-most-once delivery
 - Replay: why you can re-read from offset 0 (impossible with RabbitMQ)
 
-**Testing requirement**: For the Python aggregator, write pytest tests with a mock Kafka consumer (no real broker needed). Test the aggregation logic in isolation from infrastructure.
+**Local environment**: `docker-compose.yml` with Kafka (KRaft mode, no ZooKeeper), PostgreSQL, Redis, and Kafka UI. `docker compose up -d` gives you the full pipeline infrastructure.
+
+**Testing requirement**: For the Python aggregator, write pytest tests with a mock Kafka consumer (no real broker needed). Test the aggregation logic in isolation from infrastructure. Go producer: unit tests for event serialization and partition key logic. **CI (Go)**: `go vet` → `golangci-lint` → `go test -cover`. **CI (Python)**: `ruff` → `pytest --cov` (≥70% coverage).
 
 **AI usage note**: Draw the partition/offset model on paper first. Then ask AI: *"Check my understanding of how consumer group rebalancing works"* and explain your model to it.
 

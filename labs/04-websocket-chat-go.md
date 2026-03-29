@@ -22,7 +22,7 @@
 - WebSocket protocol: frames, ping/pong, close handshake
 - `sync.RWMutex` — when you actually need a mutex vs when a channel is better
 
-**Testing requirement**: Unit tests for the Hub using Go's `testing` package. Test: adding/removing clients, broadcasting to a room, rooms being cleaned up when empty. No need to test the WebSocket protocol itself — focus on your application logic.
+**Testing requirement**: Unit tests for the Hub using Go's `testing` package. Test: adding/removing clients, broadcasting to a room, rooms being cleaned up when empty. No need to test the WebSocket protocol itself — focus on your application logic. **CI**: `go vet` → `golangci-lint` → `go test -cover` (≥70% coverage). This is your first Go CI pipeline — adapt the GitHub Actions pattern from Lab 00-C.
 
 **AI usage note**: Go will feel strange after TypeScript. When confused by a compiler error, paste it to AI and ask what it means — not how to fix it. Learn Go's type system by fighting it, not bypassing it.
 

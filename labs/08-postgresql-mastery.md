@@ -23,7 +23,9 @@ query rewrites. No schema changes. Real dataset from IBGE.
 - Row-Level Security as a multi-tenancy pattern
 - Connection pooling with PgBouncer (why 500 app connections → 20 DB connections)
 
-**Testing requirement**: TypeScript integration tests using Drizzle + a test database. Use `beforeEach` to reset data. This is the correct pattern for testing database code.
+**Local environment**: PostgreSQL in `docker-compose.yml`. `docker compose up -d` gives you a working database seeded with IBGE data. PgBouncer optional but recommended.
+
+**Testing requirement**: TypeScript integration tests using Drizzle + the dockerized test database. Use `beforeEach` to reset data. This is the correct pattern for testing database code. **CI**: `tsc --noEmit` → `eslint` → `vitest run --coverage` (≥80% coverage).
 
 **AI usage note**: Paste a query plan to AI and ask it to explain each node. Excellent use of AI. Do not ask AI to write your indexes — figure out what to index from the query plan yourself first.
 

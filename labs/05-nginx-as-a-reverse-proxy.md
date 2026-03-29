@@ -22,7 +22,9 @@ proper WebSocket proxying.
 - `proxy_read_timeout` — why the default kills WebSocket connections
 - SSL/TLS configuration (modern cipher suites, TLS 1.2+ only)
 
-**Testing requirement**: Write a `test.sh` script that verifies: rate limiting fires at expected threshold, WebSocket upgrade succeeds through the proxy, HTTP redirects to HTTPS. Automated assertions, not manual checking.
+**Local environment**: Nginx and the Lab 04 Go server in `docker-compose.yml`. `docker compose up -d` gives you the full proxy setup for testing.
+
+**Testing requirement**: Write a `test.sh` script that verifies: rate limiting fires at expected threshold, WebSocket upgrade succeeds through the proxy, HTTP redirects to HTTPS. Automated assertions, not manual checking. **CI**: run `test.sh` in GitHub Actions after `docker compose up -d`.
 
 **AI usage note**: Nginx config documentation is dense. Ask AI: *"Explain what `limit_req zone=api burst=20 nodelay` does — specifically what 'burst' and 'nodelay' mean."* Understanding directives is fine AI use.
 

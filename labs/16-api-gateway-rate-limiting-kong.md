@@ -22,7 +22,11 @@ verification, and request logging at the gateway level.
 - Circuit breaking: fail fast when downstream is slow
 - Why putting auth in the gateway is both powerful and risky
 
-**Testing requirement**: `test.sh` that: gets rejected without a token (401), gets rate-limited after 100 requests (429), gets 503 when downstream is killed. Automated assertions.
+**Local environment**: `docker-compose.yml` with Kong (DB-less/declarative mode), Redis (rate limit backend), and both upstream APIs. `docker compose up -d` gives you the full gateway stack.
+
+**Testing requirement**: `test.sh` that: gets rejected without a token (401), gets rate-limited after 100 requests (429), gets 503 when downstream is killed. Automated assertions. **CI**: run `test.sh` in GitHub Actions after `docker compose up -d`.
+
+**AI usage note**: Kong's plugin ecosystem is large. Use AI to understand plugin configuration: *"What does the `config.fault_tolerant` option do in the rate-limiting plugin?"* Don't ask AI to generate your declarative config — write it from the docs.
 
 ---
 

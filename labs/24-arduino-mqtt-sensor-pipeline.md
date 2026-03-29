@@ -25,6 +25,10 @@ persist to PostgreSQL, visualize in Grafana. The full IoT data pipeline.
 - `retain` flag: new subscribers see the last-known value immediately
 - BRIN indexes in PostgreSQL for time-series data
 
-**Testing requirement**: Python bridge unit tests using a mock serial port. TypeScript subscriber tests with a mock MQTT client. The Arduino firmware cannot be unit-tested — this is a real embedded development constraint.
+**Local environment**: `docker-compose.yml` with Mosquitto, PostgreSQL, and Grafana. `docker compose up -d` gives you the full backend pipeline. The Arduino and Python bridge run on the host.
+
+**Testing requirement**: Python bridge unit tests using a mock serial port. TypeScript subscriber tests with a mock MQTT client. The Arduino firmware cannot be unit-tested — this is a real embedded development constraint. **CI (Python)**: `ruff` → `pytest --cov` (≥70% coverage). **CI (TypeScript)**: `tsc --noEmit` → `eslint` → `vitest run --coverage` (≥80% coverage).
+
+**AI usage note**: Serial communication debugging is frustrating. Use AI freely for: *"My Python serial read returns garbled JSON — what encoding issues should I check?"* The MQTT concepts (QoS, retain, topics) should be your own understanding.
 
 ---

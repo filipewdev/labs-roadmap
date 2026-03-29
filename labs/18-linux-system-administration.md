@@ -23,7 +23,9 @@ monitored Docker host — everything done by hand.
 - `crontab` vs systemd timers
 - `journalctl` for structured log inspection
 
-**Testing requirement**: Write a runbook (verification checklist in markdown). After setup, follow it to confirm everything works. This is what SREs actually do.
+**Testing requirement**: Write a runbook (verification checklist in markdown). After setup, follow it to confirm everything works. This is what SREs actually do. Include automated checks where possible (`systemctl is-active`, `ufw status`, `curl` assertions).
+
+**AI usage note**: Use AI freely for `systemd` unit file syntax — it's verbose. The concepts (why `Restart=on-failure`, what `WantedBy=multi-user.target` means) should be your own understanding.
 
 ---
 

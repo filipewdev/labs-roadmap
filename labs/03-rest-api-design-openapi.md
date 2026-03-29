@@ -23,7 +23,7 @@ documentation generated from the code — not written by hand.
 - OpenAPI spec structure (paths, components, schemas, responses)
 - Why code-first API docs beat hand-written docs (they stay in sync)
 
-**Testing requirement**: Use `fastify.inject()` for integration tests — no real HTTP server needed. Test: all status codes, validation rejection, pagination edge cases (empty result, last page, invalid cursor). Mock the Open Library API call.
+**Testing requirement**: Use `fastify.inject()` for integration tests — no real HTTP server needed. Test: all status codes, validation rejection, pagination edge cases (empty result, last page, invalid cursor). Mock the Open Library API call. **CI**: `tsc --noEmit` → `eslint` → `vitest run --coverage` (≥85% coverage).
 
 **AI usage note**: Ask AI to review your URL design: *"I'm designing a REST API for a book collection with authors and reviews. Here's my URL structure. What REST conventions am I violating or following well?"*
 

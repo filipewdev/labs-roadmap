@@ -20,7 +20,7 @@ validation library using only TypeScript's type system.
 - Discriminated unions for `Result<T, E>`
 - Template literal types
 
-**Testing requirement**: Unit tests for all validators. Use `expectTypeOf` from Vitest to assert that valid inputs produce the right output type. Test that invalid inputs produce typed errors, not generic ones.
+**Testing requirement**: Unit tests for all validators. Use `expectTypeOf` from Vitest to assert that valid inputs produce the right output type. Test that invalid inputs produce typed errors, not generic ones. **CI**: `tsc --noEmit` → `eslint` → `vitest run --coverage` (≥85% coverage).
 
 **AI usage note**: When stuck on a type error, paste it to AI and ask: *"Explain what this TypeScript error means"* — not *"fix my type"*. Understand the error first, then fix it yourself.
 

@@ -22,7 +22,7 @@ secure storage. Understand what "secure" actually means at the OS level.
 - App lifecycle states and when to trigger auto-lock
 - `FLAG_SECURE` — how it prevents screenshots and screen recording
 
-**Testing requirement**: Widget tests for the lock screen UI states. Unit tests for the auto-lock timer logic. Mock the biometric service — you cannot test actual biometrics in CI.
+**Testing requirement**: Widget tests for the lock screen UI states. Unit tests for the auto-lock timer logic. Mock the biometric service — you cannot test actual biometrics in CI. **CI**: `dart analyze` → `flutter test --coverage`.
 
 **AI usage note**: Security library APIs are complex and platform-specific. Use AI to understand `IOSOptions` and `AndroidOptions` parameters — the documentation is scattered.
 

@@ -20,7 +20,7 @@
 - Credential management (secrets never in workflow definitions)
 - Error workflows (n8n's equivalent of a dead letter queue)
 
-**Testing requirement**: Manual testing with real webhooks. Document test cases in `TESTING.md`: what you sent, what you expected, what happened.
+**Testing requirement**: Manual testing with real webhooks is acceptable for workflow validation — n8n workflows can't be unit-tested. Document test cases in `TESTING.md`: what you sent, what you expected, what happened. The JavaScript code nodes should have unit tests extracted into a separate `.js` file tested with Vitest.
 
 **AI usage note**: Use AI to design workflow logic: *"I want to send a WhatsApp only if a GitHub PR has ≥2 approvals. What nodes would I need?"*
 

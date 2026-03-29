@@ -22,7 +22,9 @@ correlate a log with a metric spike using the same request ID.
 - Loki's label model (why high-cardinality labels are expensive)
 - LogQL: `{job="myapp"} | json | status >= 500`
 
-**Testing requirement**: Write a test that captures log output and asserts a specific field is present (e.g., error logs include `request_id`). This pattern appears repeatedly in production code.
+**Local environment**: Extend Lab 06's `docker-compose.yml` with Loki and Promtail services. `docker compose up -d` must start the full observability stack (Go server, Prometheus, Grafana, Loki, Promtail, Node Exporter).
+
+**Testing requirement**: Write a test that captures log output and asserts a specific field is present (e.g., error logs include `request_id`). This pattern appears repeatedly in production code. **CI**: `go vet` → `golangci-lint` → `go test -cover` (≥70% coverage).
 
 **AI usage note**: Configuration files are fine to debug with AI. The concepts — why labels matter, what cardinality means — should be your own understanding.
 

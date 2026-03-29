@@ -22,7 +22,9 @@ connected — with a conflict resolution UI when two devices diverge.
 - Optimistic UI: show changes immediately, reconcile with server later
 - `Connectivity` package: detecting and reacting to network changes
 
-**Testing requirement**: Unit tests for the conflict detection logic (given local version, server version, base version → is there a conflict?). This logic must be tested completely independently of the UI and network.
+**Local environment**: The TypeScript sync server runs via `docker-compose.yml` with PostgreSQL. `docker compose up -d` gives you a working sync backend for the Flutter app to connect to.
+
+**Testing requirement**: Unit tests for the conflict detection logic (given local version, server version, base version → is there a conflict?). This logic must be tested completely independently of the UI and network. **CI (server)**: `tsc --noEmit` → `eslint` → `vitest run --coverage` (≥80% coverage). **CI (Flutter)**: `dart analyze` → `flutter test --coverage`.
 
 **AI usage note**: The sync algorithm is genuinely hard. Use AI as a rubber duck: *"I'm building offline sync with the following approach. What conflict scenarios does my detection miss?"*
 
