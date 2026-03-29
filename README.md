@@ -142,7 +142,8 @@ After that: any order based on what your current work needs or what interests yo
 | [AWS context](./docs/aws-context.md) | AWS managed equivalent for every tool used |
 | [Open APIs](./docs/open-apis.md) | BrasilAPI, BACEN, IBGE, NASA and others — mapped to labs |
 | [README template](./docs/readme-template.md) | Template for every implementation repo |
-| [Advanced labs](./docs/optional-advanced-labs.md) | Optional Rust, Lua, Elixir, and Zig tracks |
+| [Advanced labs](./docs/optional-advanced-labs.md) | Optional Rust, Lua, Elixir, Zig, and Homelab Infrastructure tracks |
+| [Homelab architecture](./docs/homelab-architecture.md) | Vision doc for a self-hosted personal cloud |
 | [Capstone I spec](./capstones/C1-therapy-platform.md) | Therapy scheduling platform — full specification |
 | [Capstone II spec](./capstones/C2-homehub.md) | HomeHub IoT + mobile — full specification |
 
