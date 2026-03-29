@@ -142,6 +142,7 @@ After that: any order based on what your current work needs or what interests yo
 
 | Document | Contents |
 |---|---|
+| [Lab workflow](./docs/lab-workflow.md) | How to approach each lab from prep to review |
 | [Lab index](./docs/all-lab-cards.md) | Full spec index with links to every lab |
 | [AWS context](./docs/aws-context.md) | AWS managed equivalent for every tool used |
 | [Open APIs](./docs/open-apis.md) | BrasilAPI, BACEN, IBGE, NASA and others — mapped to labs |

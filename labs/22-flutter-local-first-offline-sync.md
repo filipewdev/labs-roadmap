@@ -7,6 +7,8 @@ connected — with a conflict resolution UI when two devices diverge.
 
 **Language**: Dart/Flutter + TypeScript (sync server)
 
+**State management**: Riverpod (`flutter_riverpod`)
+
 **Done when**:
 - [ ] Notes stored in local SQLite via Drift — app works with zero network
 - [ ] Sync with a TypeScript server when WiFi is available
@@ -14,13 +16,20 @@ connected — with a conflict resolution UI when two devices diverge.
 - [ ] Conflict resolution UI: user sees both versions and picks one
 - [ ] Sync status visible per note: `pending`, `synced`, `conflict`
 - [ ] Background sync via `workmanager` every 15 minutes
+- [ ] State managed with Riverpod: `StreamProvider` wrapping Drift's reactive queries, `AsyncNotifierProvider` for sync operations, `Provider` for repository dependencies
+- [ ] Written comparison: BLoC (Lab 21) vs Riverpod (this lab) — which worked better for what, and why
 
 **Key concepts**:
-- Drift (SQLite ORM for Dart): tables, DAOs, reactive streams
+- Drift (SQLite ORM for Dart): tables, DAOs, reactive streams, migrations
+- Drift DAOs: encapsulate queries per table, return `Stream<List<T>>` for reactive UI
+- Drift migrations: schema versioning for when your local DB evolves between app versions
 - Sync protocol: version numbers or vector clocks
 - Conflict detection: when local and server have diverged from the same base
 - Optimistic UI: show changes immediately, reconcile with server later
 - `Connectivity` package: detecting and reacting to network changes
+- **Riverpod providers**: `Provider` (sync), `FutureProvider` (async one-shot), `StreamProvider` (reactive streams), `NotifierProvider` (mutable state with logic)
+- **Why Riverpod fits here**: Drift returns `Stream<List<Note>>` — Riverpod's `StreamProvider` makes this reactive without boilerplate. BLoC would require more ceremony for the same reactivity.
+- **Dependency injection with Riverpod**: repositories, services, and database as overridable providers (makes testing easy)
 
 **Local environment**: The TypeScript sync server runs via `docker-compose.yml` with PostgreSQL. `docker compose up -d` gives you a working sync backend for the Flutter app to connect to.
 
