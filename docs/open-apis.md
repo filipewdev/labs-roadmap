@@ -291,7 +291,7 @@ POST /emails
 
 **Why Resend over SendGrid/Mailgun**: Developer experience. The API is clean,
 TypeScript SDK is first-class, and the free tier is enough for a real therapy
-practice. It's also what modern startups use — relevant for international roles.
+practice. It's also what modern startups use — relevant for senior engineering roles.
 
 **Best for**: Capstone C1 (appointment reminders, confirmation emails), Lab 19 (n8n workflow — form → email)
 
@@ -308,7 +308,7 @@ POST /2010-04-01/Accounts/{sid}/Messages.json
 
 **Best for**: Capstone C1 (SMS reminders as a WhatsApp fallback). SMS is
 less common in Brazil (WhatsApp dominates), but understanding Twilio's API
-is valuable for international roles where SMS is the primary channel.
+is valuable for senior engineering roles where SMS is the primary channel.
 
 ### Z-API / Evolution API (WhatsApp)
 **URL**: https://www.z-api.io / https://doc.evolution-api.com

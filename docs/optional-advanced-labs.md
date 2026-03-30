@@ -672,7 +672,7 @@ they're hard to rotate, and there's no audit trail. Vault solves all three.
 ## Career & Differentiator Track
 
 > Why this track: these labs won't make or break your ability to build software,
-> but they signal to international hiring teams that you operate at a senior level.
+> but they signal to senior engineering hiring teams that you operate at a senior level.
 > Kubernetes and Terraform are expected knowledge at most mid-to-senior roles.
 > MCP is an emerging differentiator that shows you understand the AI tooling
 > ecosystem at the protocol level.
@@ -687,7 +687,7 @@ they're hard to rotate, and there's no audit trail. Vault solves all three.
 Not cluster management — just the developer-side skills: writing manifests,
 debugging pods, understanding services.
 
-**Why this matters for international roles**: Almost every mid-to-senior job
+**Why this matters for senior engineering roles**: Almost every mid-to-senior job
 description lists Kubernetes. You don't need to be a cluster admin, but you
 need to read a `kubectl get pods` output, write a Deployment manifest, and
 debug why your service isn't reachable. This lab gives you exactly that.
@@ -726,7 +726,7 @@ debug why your service isn't reachable. This lab gives you exactly that.
 recreate it to prove it's reproducible. Then set up the same server you
 manually configured in Lab 18 — but this time, entirely from code.
 
-**Why this matters for international roles**: "Infrastructure as Code" is not
+**Why this matters for senior engineering roles**: "Infrastructure as Code" is not
 optional at any serious company. Clicking in a cloud console is how you get
 an environment that nobody can reproduce and everyone is afraid to touch.
 Terraform is the industry standard.
@@ -826,6 +826,6 @@ for the full vision.
 with Net-A (DNS + networking). Then Net-B (OWASP) if you want the offensive
 security angle, or Net-C (Vault) if you're more interested in the ops side.
 
-**"I'm preparing for international interviews"** → Career-A (Kubernetes) and
+**"I'm preparing for senior engineering roles interviews"** → Career-A (Kubernetes) and
 Career-B (Terraform) are expected knowledge. Career-C (MCP) is a differentiator
 that very few candidates can demonstrate today.
