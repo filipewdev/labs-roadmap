@@ -70,12 +70,21 @@ Implementation repos (created per-lab, not in this repo) follow the template in 
 
 Home base: **TypeScript** (frontend/backend) + **Flutter/Dart** (mobile, BLoC + Riverpod). Labs introduce **Go**, **Python**, **Bash**, and **C++** (Arduino). Optional tracks cover Rust, Lua, Elixir, Zig, Kubernetes, Terraform, and MCP.
 
-## Optional Tracks (in `docs/optional-advanced-labs.md`)
+## Optional Tracks (in `docs/optional-tracks/`)
 
-Seven optional tracks exist beyond the core curriculum. These are a menu, not a checklist:
+Fifteen optional tracks exist beyond the core curriculum (47 labs total). These are a menu, not a checklist. Each track has its own file in `docs/optional-tracks/`:
 - **Rust** (5 labs): CLI, HTTP server, CSV parser, WebAssembly, embedded GPIO
 - **Lua** (4 labs): OpenResty, Redis scripting, ESP8266 IoT, Love2D game
 - **Elixir / Python-A / Zig** (3 labs): alternative language explorations
+- **Database Deep Dive** (4 labs): Neo4j graph, TimescaleDB time-series, ClickHouse analytics, SQLite internals
+- **Deep Dives** (4 labs): PostgreSQL performance tuning, production Docker, OAuth2 provider, API versioning
+- **Advanced Testing** (2 labs): E2E with Playwright, contract/smoke/load testing with Pact + k6
+- **Web & Data** (2 labs): web scraping with Scrapy/Playwright, full-text search with Meilisearch
+- **Real-Time & Networking** (2 labs): UDP game server, WebRTC video calls
+- **Architecture Patterns** (2 labs): event sourcing & CQRS, background jobs with BullMQ
+- **Distributed Systems** (3 labs): OpenTelemetry tracing, circuit breakers & saga pattern, distributed locks
+- **DevOps Patterns** (3 labs): canary/blue-green deploys, zero-downtime DB migrations, multi-layer caching
+- **Language Internals** (1 lab): build a tiny compiler in Go
 - **Homelab Infrastructure** (6 labs): Proxmox, WireGuard, Traefik, Harbor, Portainer, home services
 - **Networking & Security** (3 labs): DNS/networking, OWASP hands-on, Vault secrets management
 - **Career & Differentiator** (3 labs): Kubernetes, Terraform, MCP server
