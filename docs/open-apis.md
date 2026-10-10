@@ -282,7 +282,7 @@ genuinely free for lab-scale usage with no billing surprises.
 ```
 POST /emails
 {
-  "from": "the therapist <appointments@yourdomain.com>",
+  "from": "Your Practice <appointments@yourdomain.com>",
   "to": ["client@email.com"],
   "subject": "Appointment reminder — tomorrow at 14:00",
   "html": "<p>Your session is confirmed for tomorrow.</p>"
@@ -303,7 +303,7 @@ practice. It's also what modern startups use — relevant for senior engineering
 POST /2010-04-01/Accounts/{sid}/Messages.json
   From: +1234567890 (Twilio number)
   To: +5561999999999
-  Body: "Your session with the therapist is tomorrow at 14:00."
+  Body: "Your session is tomorrow at 14:00."
 ```
 
 **Best for**: Capstone C1 (SMS reminders as a WhatsApp fallback). SMS is
