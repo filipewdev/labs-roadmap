@@ -1,7 +1,7 @@
 # Capstone I — Therapy Scheduling Platform
 
 > **Type**: Capstone (multi-month build, not a weekend lab)
-> **Purpose**: Losângela's real production app — a landing page + scheduling system for her therapy practice
+> **Purpose**: A real production app for a solo therapist's practice — a landing page + scheduling system
 > **Stack**: TypeScript throughout (Next.js frontend, Fastify backend), with tooling from the labs integrated
 > **Build after**: Labs 03, 08, 09, 11, 14, 15, 19
 
@@ -14,11 +14,11 @@ That constraint forces you to think about security, privacy, reliability, and us
 experience in ways that tutorial projects never do.
 
 **Core features:**
-1. Public landing page for Losângela's practice
+1. Public landing page for the practice
 2. Client self-scheduling (book, reschedule, cancel)
 3. Automated reminders (WhatsApp + email + SMS) 24h before each session
 4. Per-session notes and therapeutic report editor (private, therapist-only)
-5. Admin dashboard for Losângela (schedule overview, client list, reports)
+5. Admin dashboard for the therapist (schedule overview, client list, reports)
 6. Full observability (Prometheus + Grafana from Lab 06)
 7. Deployed on a VPS behind Nginx (from Lab 05) with SSL
 
@@ -292,7 +292,7 @@ Store ADRs in `docs/adr/` in the repo. They are part of the deliverable.
 - [ ] M7: Observability wired in
 - [ ] M8: Deploy to VPS + domain + SSL
 - [ ] M9: LGPD compliance review
-- [ ] M10: Go live — Losângela uses it with real clients
+- [ ] M10: Go live — the therapist uses it with real clients
 
 ---
 
