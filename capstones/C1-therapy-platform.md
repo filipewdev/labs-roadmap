@@ -1,7 +1,7 @@
 # Capstone I — Therapy Scheduling Platform
 
 > **Type**: Capstone (multi-month build, not a weekend lab)
-> **Purpose**: the therapist's real production app — a landing page + scheduling system for her therapy practice
+> **Purpose**: A real production app for a solo therapist's practice — a landing page + scheduling system
 > **Stack**: TypeScript throughout (Next.js frontend, Fastify backend), with tooling from the labs integrated
 > **Build after**: Labs 03, 08, 09, 11, 14, 15, 19
 
@@ -14,7 +14,7 @@ That constraint forces you to think about security, privacy, reliability, and us
 experience in ways that tutorial projects never do.
 
 **Core features:**
-1. Public landing page for the therapist's practice
+1. Public landing page for the practice
 2. Client self-scheduling (book, reschedule, cancel)
 3. Automated reminders (WhatsApp + email + SMS) 24h before each session
 4. Per-session notes and therapeutic report editor (private, therapist-only)

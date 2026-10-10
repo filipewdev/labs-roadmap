@@ -38,6 +38,8 @@ A **specs-only curriculum repository** — lab specifications, reference docs, c
   - Shell/config labs: `test.sh` in CI after `docker compose up -d`
 - **Security gates in CI** — Lab 00-C establishes dependency audit + security linting inherited by all labs
 - **ADRs in capstones** — both C1 and C2 require Architecture Decision Records in `docs/adr/`
+- **Generic names** — real people, clients and businesses are always described generically (e.g. "a therapist's practice", "a donation platform"), so specs stay private and anyone with the same problem can reuse them
+- **Two licences** — written content is CC BY-NC-SA 4.0 (`LICENSE-docs`); code and code blocks are MIT (`LICENSE`)
 - **Lab completion criteria**: (1) implementation repo with CI green, (2) README with "Key Concepts Learned" in plain language, (3) GitHub issue closed
 
 ## Working in This Repo
