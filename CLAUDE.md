@@ -12,6 +12,7 @@ A **specs-only curriculum repository** — lab specifications, reference docs, c
 - `phase-0/` — 3 foundational lab specs (00-A testing, 00-B AI usage, 00-C Git/CI with security gates)
 - `capstones/` — 2 capstone project specs (C1: therapy platform, C2: IoT+mobile HomeHub)
 - `open-source/` — 3 open-source track specs (OS-A npm, OS-B contribution + code review, OS-C pub.dev) + overview
+- `portfolio/` — portfolio track specs (PF-0 content and privacy, PF-1 AWS infrastructure, PF-2 site skeleton, PF-3 data-driven pages) + overview
 - `docs/` — reference and guidance docs:
   - `lab-workflow.md` — how to approach each lab from prep to review (the process guide)
   - `all-lab-cards.md` — full spec index with links to every lab
