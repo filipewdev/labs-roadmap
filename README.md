@@ -172,3 +172,14 @@ Home base: **TypeScript** (frontend/backend) · **Flutter** (mobile)
 Introduced through labs: **Go** · **Python** · **Bash** · **C++** (Arduino)
 
 Optional tracks: **Rust** · **Lua** · **Elixir** · **Zig**
+
+---
+
+## License
+
+This repository uses two licences:
+
+- **Written content** (lab specs, capstone specs, reference docs and the roadmap) is licensed under [CC BY-NC-SA 4.0](LICENSE-docs). You may share and adapt it with attribution, for non-commercial purposes, under the same licence.
+- **Code** (source files, and the commands, configs and snippets in code blocks inside the Markdown) is licensed under the [MIT License](LICENSE).
+
+Versions published before this change (October 2026) were released entirely under the MIT License, and those versions remain under MIT.
