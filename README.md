@@ -113,6 +113,12 @@ Phase 13 — API Paradigms & Architecture
   OS-B  First OSS Contribution              (after 00-C)
   OS-C  Publish pub.dev Package             (after Lab 21)
 
+── Portfolio Track ──────────────────────────────────────────────────────
+  PF-0  Content and Privacy Pass            (any time)
+  PF-1  Static Site Infrastructure on AWS   (after 00-C)
+  PF-2  Site Skeleton in Three Languages    (after PF-1)
+  PF-3  Data-Driven Pages + Public Gate     (after PF-2)
+
 ── Capstones ────────────────────────────────────────────────────────────
   C1    Therapy Scheduling Platform         (after Labs 03 08 09 11 14 15 19)
   C2    HomeHub: IoT + Mobile               (after Labs 05 06 07 08 18 21–25)

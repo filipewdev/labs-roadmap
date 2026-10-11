@@ -146,6 +146,19 @@ Not phase-dependent. Do OS-A right after Lab 00-A. OS-B any time after 00-C. OS-
 
 ---
 
+## Portfolio Track
+
+A personal portfolio built as a series of labs. Public after PF-3; later labs add story pages and visual chapters. See the [track overview](../portfolio/PF-overview.md).
+
+| Lab | File | Time | Language |
+|---|---|---|---|
+| [PF-0 — Content and Privacy Pass](../portfolio/PF-0-content-and-privacy.md) | `portfolio/PF-0-content-and-privacy.md` | 4h | Writing |
+| [PF-1 — Static Site Infrastructure on AWS](../portfolio/PF-1-static-site-infrastructure.md) | `portfolio/PF-1-static-site-infrastructure.md` | 8h | Terraform + YAML |
+| [PF-2 — Site Skeleton in Three Languages](../portfolio/PF-2-site-skeleton.md) | `portfolio/PF-2-site-skeleton.md` | 8h | TypeScript (Astro) |
+| [PF-3 — Data-Driven Pages + Public Gate](../portfolio/PF-3-data-driven-pages.md) | `portfolio/PF-3-data-driven-pages.md` | 8h | TypeScript (Astro) |
+
+---
+
 ## Capstones
 
 Full specs in their own files. Do not start until you've completed the prerequisite labs.
