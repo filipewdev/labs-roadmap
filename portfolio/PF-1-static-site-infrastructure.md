@@ -11,6 +11,14 @@ deployed by GitHub Actions without a single stored AWS key.
 **AWS parallel**: This lab *is* AWS. It covers S3, CloudFront, Route 53, ACM, IAM roles, OIDC federation, CloudFront Functions and Budgets: a large slice of the Solutions Architect Associate exam, done for real.
 
 **Done when**:
+
+*Account baseline (first hour):*
+- [ ] Old resources reviewed in Billing and Cost Explorer across all regions; anything unused deleted
+- [ ] Root user has MFA and no access keys; daily work uses a separate administrator identity with MFA (IAM Identity Center, or an IAM user if Identity Center isn't available on the account)
+- [ ] An AWS Budgets alert fires at US$5 per month
+- [ ] If the domain was registered in Route 53, it's imported into Terraform with auto-renew, privacy protection and transfer lock on
+
+*Hosting:*
 - [ ] S3 bucket is private: Block Public Access on, no website endpoint, versioning on
 - [ ] CloudFront serves the bucket through Origin Access Control (OAC); the bucket policy allows only that distribution
 - [ ] ACM certificate (issued in `us-east-1`) covers the apex domain and `www`; `www` redirects to the apex
@@ -20,9 +28,8 @@ deployed by GitHub Actions without a single stored AWS key.
 - [ ] Terraform state lives in a remote S3 backend with locking enabled
 - [ ] GitHub Actions assumes an IAM role through OIDC; the trust policy is pinned to your repo and main branch; the role can only sync to that bucket and invalidate that distribution
 - [ ] Pull requests run `terraform plan`; merging to main applies and deploys
-- [ ] An AWS Budgets alert fires at US$5 per month
 - [ ] MDN HTTP Observatory grades the placeholder page A+ (score 100 or more)
-- [ ] No AWS access keys exist in the repo, in GitHub secrets, or anywhere except your own SSO session
+- [ ] No AWS access keys exist in the repo, in GitHub secrets, or anywhere except your own signed-in session
 
 **Key concepts**:
 - Why OAC and a private bucket beat a public S3 website endpoint
@@ -32,13 +39,15 @@ deployed by GitHub Actions without a single stored AWS key.
 - Response headers policies, and why a header CSP can do things a `<meta>` CSP can't (`frame-ancestors`)
 - Terraform remote state and locking: what goes wrong without them
 - Alias records vs CNAMEs at the zone apex
+- The root user's job: billing and a few account-level tasks only; everything else goes through an identity you can lock down and audit
+- Importing resources that already exist (like a registered domain) into Terraform instead of recreating them
 
 **Watch out for**:
 - CloudFront's flat-rate free plan doesn't include custom response headers policies. Use pay-as-you-go; at personal-site traffic it stays inside the free tier.
 - GitHub's OIDC `sub` claim format can differ for newer repositories. Check the claim your repo actually sends before pinning the trust policy to it.
 - Skip AWS WAF for this site; its fixed monthly cost outweighs everything else here.
 
-**Local environment**: Terraform CLI and AWS CLI with an IAM Identity Center (SSO) profile. No containers needed.
+**Local environment**: Terraform CLI and AWS CLI, signed in as your administrator identity (an IAM Identity Center profile, or short-lived credentials with MFA). No containers needed.
 
 **Testing requirement**: CI runs `terraform fmt -check`, `terraform validate`, `tflint` and an IaC scan (`trivy config` or `checkov`) on every pull request. After apply, a `test.sh` asserts with `curl`: HTTPS returns 200; HTTP redirects to HTTPS; `www` redirects to the apex; every security header is present with the expected value; the bucket's direct URL returns 403; `/` redirects by `Accept-Language`. A CI step calls the Observatory API and fails below 100.
 

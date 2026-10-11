@@ -15,7 +15,7 @@ and the first decision record in place.
 - [ ] Title-screen text written: name, role, one sentence (≤ 40 words)
 - [ ] Facts page text written in the default language: role, years, scope, stack, languages, education, certifications, links
 - [ ] Site map sketched: every page with its path, and which page is the plain view
-- [ ] Domain registered with WHOIS privacy; renewal price checked
+- [ ] Domain registered with WHOIS privacy, auto-renew on and two-factor authentication on the registrar account; renewal price checked. Registering at Route 53 is easiest if PF-1 runs on AWS; any registrar works if you point its nameservers to Route 53
 - [ ] `docs/adr/0001-stack-and-hosting.md` written: context, options considered, decision, consequences
 
 **Key concepts**:
