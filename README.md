@@ -119,6 +119,9 @@ Phase 13 — API Paradigms & Architecture
   PF-2  Site Skeleton in Three Languages    (after PF-1)
   PF-3  Data-Driven Pages + Public Gate     (after PF-2)
 
+── Algorithms Track ─────────────────────────────────────────────────────
+  AL-A  Patterns Drills                     (a season; any time)
+
 ── Capstones ────────────────────────────────────────────────────────────
   C1    Therapy Scheduling Platform         (after Labs 03 08 09 11 14 15 19)
   C2    HomeHub: IoT + Mobile               (after Labs 05 06 07 08 18 21–25)

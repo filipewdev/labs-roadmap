@@ -159,6 +159,16 @@ A personal portfolio built as a series of labs. Public after PF-3; later labs ad
 
 ---
 
+## Algorithms Track
+
+Short, frequent sessions instead of weekend labs, run as a season of their own. See the [track overview](../algorithms/AL-overview.md) for the principles, the timing and the tools.
+
+| Lab | File | Time | Language |
+|---|---|---|---|
+| [AL-A — Patterns Drills](../algorithms/AL-A-patterns-drills.md) | `algorithms/AL-A-patterns-drills.md` | 8–10 weeks, ~25h | TypeScript or Python |
+
+---
+
 ## Capstones
 
 Full specs in their own files. Do not start until you've completed the prerequisite labs.
