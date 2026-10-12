@@ -7,7 +7,7 @@
 **Language**: Go
 
 **Done when**:
-- [ ] Server handles multiple named rooms (`/ws?room=general&username=filipe`)
+- [ ] Server handles multiple named rooms (`/ws?room=general&username=ana`)
 - [ ] All clients in a room receive broadcasted messages
 - [ ] Presence: joining/leaving triggers a user list update to everyone in the room
 - [ ] Typing indicator: debounced notification to room when a user is typing

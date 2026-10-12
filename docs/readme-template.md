@@ -12,7 +12,7 @@
 
 # Lab NN — [Lab Name]
 
-![CI](https://github.com/filipewdev/REPONAME/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/OWNER/REPONAME/actions/workflows/ci.yml/badge.svg)
 [![Coverage](https://img.shields.io/badge/coverage-XX%25-brightgreen)](#tests)
 
 <!-- One sentence: what this is and what it demonstrates.
