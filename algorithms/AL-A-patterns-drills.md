@@ -6,7 +6,7 @@ medium-difficulty problem in about 30 minutes while explaining your approach.
 
 **Time box**: A season of 8–10 weeks, 3–4 sessions a week of 30–45 minutes (about 25 hours in total). One board card for the whole season.
 
-**Language**: One language for the whole season. TypeScript (your strongest) or Python (concise, and common in timed practice). Don't switch mid-season.
+**Language**: One language for the whole season. The one you know best, or Python (concise, and common in timed practice). TypeScript and Python both fit the CI below. Don't switch mid-season.
 
 **Done when**:
 - [ ] A `dsa-drills` repo with one folder per pattern and one file per problem, each with its tests

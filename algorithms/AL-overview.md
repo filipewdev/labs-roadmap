@@ -42,7 +42,7 @@ whole foundation.
 
 - **Not alongside a heavy season.** Run it as its own season, when you have steady weekday time.
 - **Timing matters.** The skill fades, so schedule the season close to when you'll need it, rather than as early as possible.
-- **Keep the muscle warm in between:** a few exercises a week on Exercism, in a language you're learning anyway (Go fits the Go labs).
+- **Keep the muscle warm in between:** a few exercises a week on Exercism, in a language you're learning anyway, such as the language of the lab you're doing.
 
 ---
 
