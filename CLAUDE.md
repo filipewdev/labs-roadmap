@@ -21,6 +21,7 @@ A **specs-only curriculum repository** — lab specifications, reference docs, c
   - `optional-advanced-labs.md` — optional tracks: Rust, Lua, Elixir, Zig, Homelab Infrastructure, Networking & Security, Career & Differentiator
   - `homelab-architecture.md` — vision doc for a self-hosted personal cloud
   - `aws-context.md` — AWS managed equivalent for every tool used
+  - `aws-account-baseline.md` — one-time, free account setup (root, Identity Center, cost and security guardrails, naming and tags) before any AWS lab
   - `open-apis.md` — public APIs mapped to labs
   - `adr/` — decision records for this repository itself, plus `template.md` for ADRs in any repo
 - `.github/ISSUE_TEMPLATE/` — lab journal issue template for tracking progress

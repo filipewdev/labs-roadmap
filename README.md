@@ -158,6 +158,7 @@ After that: any order based on what your current work needs or what interests yo
 | [README template](./docs/readme-template.md) | Template for every implementation repo |
 | [Advanced labs](./docs/optional-advanced-labs.md) | Optional tracks: Rust, Lua, Elixir, Zig, Homelab Infra, Networking & Security, Career |
 | [Cost guide](./docs/cost-guide.md) | What's free, what costs money, total budget planner |
+| [AWS account baseline](./docs/aws-account-baseline.md) | One-time, free setup for any AWS account before the first AWS lab |
 | [Homelab architecture](./docs/homelab-architecture.md) | Vision doc for a self-hosted personal cloud |
 | [Decision records](./docs/adr/) | Why this repo works the way it does, plus an ADR template for any repo |
 | [Capstone I spec](./capstones/C1-therapy-platform.md) | Therapy scheduling platform — full specification |

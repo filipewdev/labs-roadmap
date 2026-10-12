@@ -12,10 +12,11 @@ deployed by GitHub Actions without a single stored AWS key.
 
 **Done when**:
 
-*Account baseline (first hour):*
+*Account baseline (first hour; the full checklist is in [AWS account baseline](../docs/aws-account-baseline.md)):*
 - [ ] Old resources reviewed in Billing and Cost Explorer across all regions; anything unused deleted
 - [ ] Root user has MFA and no access keys; daily work uses a separate administrator identity with MFA (IAM Identity Center, or an IAM user if Identity Center isn't available on the account)
 - [ ] An AWS Budgets alert fires at US$5 per month
+- [ ] Cost Anomaly Detection, account-level S3 Block Public Access and an IAM Access Analyzer (external access) are on
 - [ ] If the domain was registered in Route 53, it's imported into Terraform with auto-renew, privacy protection and transfer lock on
 
 *Hosting:*
