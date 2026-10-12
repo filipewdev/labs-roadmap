@@ -13,6 +13,7 @@ A **specs-only curriculum repository** — lab specifications, reference docs, c
 - `capstones/` — 2 capstone project specs (C1: therapy platform, C2: IoT+mobile HomeHub)
 - `open-source/` — 3 open-source track specs (OS-A npm, OS-B contribution + code review, OS-C pub.dev) + overview
 - `portfolio/` — portfolio track specs (PF-0 content and privacy, PF-1 AWS infrastructure, PF-2 site skeleton, PF-3 data-driven pages) + overview
+- `algorithms/` — algorithms track: AL-A patterns drills (a season of short sessions, not a weekend lab) + overview with tools and resources
 - `docs/` — reference and guidance docs:
   - `lab-workflow.md` — how to approach each lab from prep to review (the process guide)
   - `all-lab-cards.md` — full spec index with links to every lab
