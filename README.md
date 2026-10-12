@@ -4,8 +4,8 @@
 > infrastructure, databases, mobile, IoT, ML, and system design — each one
 > standalone, test-first, and documented.
 
-[![Labs completed](https://img.shields.io/github/issues-closed/filipewdev/labs-roadmap?label=labs%20completed&color=22c55e)](https://github.com/YOURNAME/labs-roadmap/issues?q=is%3Aissue+is%3Aclosed)
-[![In progress](https://img.shields.io/github/issues/filipewdev/labs-roadmap?label=in%20progress&color=3b82f6)](https://github.com/YOURNAME/labs-roadmap/issues?q=is%3Aissue+is%3Aopen)
+[![Labs completed](https://img.shields.io/github/issues-closed/filipewdev/labs-roadmap?label=labs%20completed&color=22c55e)](https://github.com/filipewdev/labs-roadmap/issues?q=is%3Aissue+is%3Aclosed)
+[![In progress](https://img.shields.io/github/issues/filipewdev/labs-roadmap?label=in%20progress&color=3b82f6)](https://github.com/filipewdev/labs-roadmap/issues?q=is%3Aissue+is%3Aopen)
 
 ---
 

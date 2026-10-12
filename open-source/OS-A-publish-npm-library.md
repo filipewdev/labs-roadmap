@@ -86,7 +86,7 @@ Most developers only set `main`. A proper library sets all of these:
     "url": "https://github.com/yourname/br-utils"
   },
   "license": "MIT",
-  "author": "Filipe Brandao <your@email.com>",
+  "author": "Your Name <your@email.com>",
   
   "main": "./dist/index.cjs",        ← CJS: what require() uses (Node.js, old bundlers)
   "module": "./dist/index.js",       ← ESM: what import uses (modern bundlers)
